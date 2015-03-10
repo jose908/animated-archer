@@ -1,9 +1,11 @@
-== sensors.txt
+Files to be used for testing the server.
+
+== sensors.txt ==
 This file has the requests from the sensors to start reporting data.
 
-== measurements.txt
+== measurements.txt ==
 This file has the entries of the measurements. They report temperature, relative humidity, light and voltage.
 It was considered a 1% of packet losses, therefore some numbers in the sequence of counters are missing.
 
-== alarms.txt
+== alarms.txt ==
 Data about warning situations. For example, to alert that the battery is low.
