@@ -1,0 +1,5 @@
+{"latitude":41.403282,"logitude":2.193874,"type":"request","mac":"11-34-56-78-9A-BC"}
+{"latitude":41.404457,"logitude":2.192393,"type":"request","mac":"22-AA-56-78-9A-BC"}
+{"latitude":41.404095,"logitude":2.190558,"type":"request","mac":"33-34-AC-78-9A-BC"}
+{"latitude":41.402461,"logitude":2.192726,"type":"request","mac":"44-34-96-78-9A-BC"}
+{"latitude":41.404159,"logitude":2.195,"type":"request","mac":"55-34-56-22-9A-BC"}
