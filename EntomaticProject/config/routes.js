@@ -34,7 +34,11 @@ module.exports.routes = {
 
   '/': {    view: 'homepage'  },
 
-  '/newSensorRecord': 'SensorRecordController.newRecord'
+  'post /newsensor': 'SensorController.newSensor',
+
+  'post /newMeasurement':'MeasurementController.newMeasurement',
+
+  'post /newAlarm': 'AlarmController.newAlarm'
 
 
 
