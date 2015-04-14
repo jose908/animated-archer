@@ -6,95 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
+  <link rel="icon" href="../../entomaticon.ico">
 
-  <title>Entomatic home page</title>
+  <title>Entomatic Home Page</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/styles/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/loginStyle.css">
 
-  <!-- Custom styles for this template -->
-  <link href="jumbotron.css" rel="stylesheet">
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/dependencies/angular.js"></script>
+  <script src="/js/public/login/LoginModule.js"></script>
+  <script src="/js/public/login/LoginController.js"></script>
 
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 </head>
 
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Entomatic</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" placeholder="User" class="form-control">
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
-      </form>
-    </div><!--/.navbar-collapse -->
-  </div>
-</nav>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div style="background:transparent !important" class="jumbotron">
-  <div class="container">
-    <img class="center-block" src="/images/ent1.png" >
-  </div>
-</div>
+<body ng-app="LoginModule" ng-controller="LoginController" ng-cloak>
 
 <div class="container">
-  <!-- Example row of columns -->
-  <div class="row">
+
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+
     <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      <section class="login-form">
+        <form ng-submit="submitLoginForm()" role="login">
+
+         <img src="/images/ent1.png" class="img-responsive" alt="" />
+          <input ng-model="loginForm.user" type="text" placeholder="User" name="user" class="form-control" ng-click="disableWarning()" >
+          <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control" ng-click="disableWarning()" ng-change="disableWarning()" >
+          <div ng-show="loginForm.userValidation" class="alert alert-danger" role="alert">
+            <span ng-show="loginForm.userValidation" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span ng-show="loginForm.userValidation" class="sr-only">Error:</span>
+            Wrong user or/and password
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">
+            <span ng-show="!loginForm.loading">Sign in</span>
+            <span ng-show="loginForm.loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+            <span ng-show="loginForm.loading">Signing in...</span>
+          </button>
+          <div>
+           <a href="#">Problems with your user?</a>
+          </div>
+        </form>
+
+        <div class="form-links">
+          <a href="#">Entomatic 2015</a>
+        </div>
+      </section>
     </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
+
+    <div class="col-md-4"></div>
+
+
   </div>
 
-  <hr>
-
-  <footer>
-    <p>&copy; UPF</p>
-  </footer>
-</div> <!-- /container -->
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</div>
+
+
 </body>
 </html>

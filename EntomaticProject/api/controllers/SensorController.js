@@ -13,7 +13,7 @@ module.exports = {
     Sensor.create({latitude: req.body.latitude, longitude: req.body.longitude, mac: req.body.mac}).exec(function createCB(err, created) {
 
     if( err == null) {
-      console.log('Created new sensor record with id '+ created.sensorId + ' at' + created.createDate);
+      console.log('Created new sensor record with id '+ created.sensorId + ' at ' + created.createDate);
       res.ok({sensorId: created.sensorId});
     }
      else {
@@ -22,6 +22,16 @@ module.exports = {
     }
 
     });
+
+  },
+  getAllSensors: function(req,res) {
+
+    Sensor.find({}).exec(function findCB(err,found){
+        res.json(found);
+    });
+
+
+
 
   }
 

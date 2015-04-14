@@ -32,13 +32,24 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {    view: 'homepage'  },
 
+   /*FRONT END API */
+  '/': 'PageController.showHomePage',
+
+  // User enrollment + authentication
+  'POST /signup': 'UserController.signup',
+  'PUT /login': 'UserController.login',
+  'GET /logout': 'UserController.logout',
+  'GET /getAllSensors': 'SensorController.getAllSensors',
+
+
+  /*SENSOR API */
   'post /newsensor': 'SensorController.newSensor',
 
   'post /newMeasurement':'MeasurementController.newMeasurement',
 
   'post /newAlarm': 'AlarmController.newAlarm'
+
 
 
 
