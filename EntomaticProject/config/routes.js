@@ -40,7 +40,15 @@ module.exports.routes = {
   'POST /signup': 'UserController.signup',
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
-  'GET /getAllSensors': 'SensorController.getAllSensors',
+  'GET /getSensors': 'SensorController.getSensors',
+  'GET /getMeasurementTypes': 'MeasurementTypeController.getMeasurementTypes',
+  'GET /getInitValues': 'UserController.getInitValues',
+  'GET /getSelectedMeasurement': 'MeasurementController.getSelectedMeasurement',
+  'GET /getUnviewedAlarms': 'AlarmController.getUnviewedAlarms',
+  'PUT /setViewedAlarm': 'AlarmController.setViewedAlarm',
+
+
+
 
 
   /*SENSOR API */

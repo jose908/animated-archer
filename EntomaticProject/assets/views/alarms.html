@@ -1,0 +1,48 @@
+<div ng-init = "initFunction()"></div>
+<a><strong><span class="glyphicon glyphicon-bell"></span>&nbsp;Alarms</strong></a>
+<hr>
+<accordion>
+  <accordion-group is-open="true">
+    <accordion-heading>
+      <stronng>New Alarms</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+    </accordion-heading>
+    <div class="table ">
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Sensor id</th>
+          <th>Alarm type</th>
+          <th>Value</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="unViewedAlarm in unViewedAlarms.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))">
+
+        <tr>
+          <td>{{unViewedAlarm.sensorId}}</td>
+          <td><span class="label label-warning">{{unViewedAlarm.alarmTypeId.name}}</span></td>
+          <td><span class="label label-danger">{{unViewedAlarm.value}}</span></td>
+          <td>{{unViewedAlarm.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+          <td><button type="button" class="btn btn-success btn-sm" ng-click="markAsViewed( ((currentPage-1)*numPerPage)+ $index, unViewedAlarm.alarmId)">viewed</button></td>
+          <td><button type="button" class="btn btn-default" ng-click="goToStadistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-map-marker"></i></button></td>
+          <td><button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-stats"></i></button></td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <pagination
+              ng-model="currentPage"
+              total-items="unViewedAlarms.length"
+              items-per-page = "numPerPage"
+              boundary-links="true"
+              class="pagination-sm">
+            </pagination>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </accordion-group>
+</accordion>

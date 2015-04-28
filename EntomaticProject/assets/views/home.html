@@ -1,0 +1,63 @@
+<div class="col-md-14">
+  <!-- Right -->
+
+  <a><strong><span class="glyphicon glyphicon-dashboard"></span> Entomatic Dashboard</strong></a>
+
+  <hr>
+
+      <div class="alert alert-danger" role="alert" > <a ui-sref='main.alarms'class="alert-link">New Alarms</a><span class="badge pull-right">{{initValues.alarms }}</span></div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <i class="icon icon-chevron-up chevron"></i>
+          <i class="icon icon-wrench pull-right"></i> Quick Start
+        </div>
+        <div class="panel-content">
+
+          <div class="btn-group btn-group-justified">
+            <a ui-sref='main.sensorLocation' class="btn btn-primary col-sm-3">
+              <i class="glyphicon glyphicon-map-marker"></i>
+              <p>Location</p>
+            </a>
+            <a ui-sref='main.stadistics' class="btn btn-primary col-sm-3">
+              <i class="glyphicon glyphicon-stats"></i>
+              <p>Stats</p>
+            </a>
+            <a ui-sref='main.alarms' class="btn btn-primary col-sm-3">
+              <i class="glyphicon glyphicon-bell"></i>
+              <p>Alarms</p>
+            </a>
+            <a ui-sref='main.config'class="btn btn-primary col-sm-3">
+              <i class="glyphicon glyphicon-cog"></i>
+              <p>config</p>
+            </a>
+          </div>
+        </div><!--/panel content-->
+      </div><!--/panel-->
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Report</div>
+        <table class="table table-striped">
+          <thead>
+          <tr><th>Active Nodes</th><th>Col 2</th><th>Col 3</th></tr></thead>
+
+          <tbody>
+          <tr><td>45</td><td>2.45%</td><td>Direct</td></tr>
+          <tr><td>289</td><td>56.2%</td><td>Referral</td></tr>
+          <tr><td>98</td><td>25%</td><td>Type</td></tr>
+          <tr><td>..</td><td>..</td><td>..</td></tr>
+          <tr><td>..</td><td>..</td><td>..</td></tr>
+          </tbody>
+        </table>
+      </div><!--/panel-->
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Charts</div>
+        <div class="panel-body"><img src="http://www.wired.com/playbook/wp-content/uploads/2012/08/data-tracking-run-chart.jpg" class="img-responsive"></div>
+      </div><!--/panel-->
+
+
+</div>
+

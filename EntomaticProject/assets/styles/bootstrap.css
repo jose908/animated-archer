@@ -6601,11 +6601,12 @@ button.close {
 .angular-google-map-container { height: 400px; }
 
 .spacer {
-  margin-top: 30px; /* define margin as you see fit */
+  margin-top: 20px; /* define margin as you see fit */
 }
 .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
   background-color: #0088CC;
   color:#eeeeee;
 }
+
 
 /*# sourceMappingURL=bootstrap.css.map */

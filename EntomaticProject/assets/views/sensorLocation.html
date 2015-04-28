@@ -1,0 +1,77 @@
+<div ng-init="loadLocationTab(false)"> <div>
+<a><strong><span class="glyphicon glyphicon-map-marker"></span>&nbsp;Sensor Location</strong></a>
+<a title="Add Widget" data-toggle="modal" ng-click="loadLocationTab(true)"
+   class="btn btn-primary pull-right"><span class="glyphicon glyphicon-refresh"></span></a>
+
+<hr>
+
+<div ng-if="!isMapLoaded" class="col-md-10 col-md-offset-5">
+  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate bigger"></span>
+</div>
+
+<div ng-if="isMapLoaded">
+
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+
+    <ui-gmap-marker data-ng-repeat="sensor in sensors" idkey="sensor.sensorId" coords="sensor"
+                    click="closeClick(sensor.sensorId)" options="animation" >
+      <ui-gmap-window show="clickedMarker==sensor.sensorId">
+        {{sensor.sensorId}}
+
+      </ui-gmap-window>
+
+    </ui-gmap-marker>
+
+  </ui-gmap-google-map>
+  <div class="row spacer"></div>
+
+  <accordion>
+  <accordion-group is-open="true">
+    <accordion-heading>
+     <stronng>Sensor List</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+    </accordion-heading>
+         <div class="table-responsive">
+          <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>Sensor id</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>mac</th>
+            <th>Created at</th>
+
+
+          </tr>
+          </thead>
+          <tbody ng-repeat="sensor in sensors.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))"
+                 ng-click="goToMarker(sensor.latitude, sensor.longitude, sensor.sensorId)">
+          <tr>
+            <td>{{sensor.sensorId}}</td>
+            <td>{{sensor.latitude}}</td>
+            <td>{{sensor.longitude}}</td>
+            <td>{{sensor.mac}}</td>
+            <td>{{sensor.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+            <td><button type="button" class="btn btn-default" ng-click="goToStadistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-stats"></i></button></td>
+            <td><button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></td>
+
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5" class="text-center">
+              <pagination
+                ng-model="currentPage"
+                total-items="sensors.length"
+                items-per-page = "numPerPage"
+                boundary-links="true"
+                class="pagination-sm">
+              </pagination>
+            </td>
+          </tr>
+          </tfoot>
+          </table>
+        </div>
+        </accordion-group>
+  </accordion>
+
+</div>

@@ -33,6 +33,12 @@ module.exports = {
       model: 'AlarmType',
       columnName: 'alarm_type_id'
     },
+    viewed: {
+      type: 'boolean',
+      columnName: 'viewed',
+      defaultsTo: 'false'
+    },
+
     createDate: {
       type: 'datetime',
       required: true,

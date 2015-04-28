@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="MainModule">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../entomaticon.ico">
+
+  <title>Entomatic Dashboard</title>
+
+
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+
+  <script src="/js/dependencies/angular.js"></script>
+  <script src="/js/dependencies/angular-ui-router.js"></script>
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/dependencies/moment.js"></script>
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+  <script src="/js/dependencies/angular-google-maps.js"></script>
+  <script src="/js/dependencies/angular-moment.js"></script>
+  <script src="/js/dependencies/lodash.js"></script>
+  <script src="/js/dependencies/ng-google-chart.js"></script>
+  <script src="/js/dependencies/ui-bootstrap.js"></script>
+  <script src="/js/private/dashboard/MainModule.js"></script>
+  <script src="/js/private/dashboard/Router/MainRouter.js"></script>
+  <script src="/js/private/dashboard/Services/ServerRequestService.js"></script>
+  <script src="/js/private/dashboard/Controllers/MainController.js"></script>
+  <script src="/js/private/dashboard/Controllers/SensorLocationController.js"></script>
+  <script src="/js/private/dashboard/Controllers/StadisticsController.js"></script>
+  <script src="/js/private/dashboard/Controllers/AlarmController.js"></script>
+  <script src="/js/private/dashboard/Controllers/ConfigController.js"></script>
+  <script src="/js/private/dashboard/Controllers/HomeController.js"></script>
+
+</head>
+<body>
+<div ui-view></div>
+</body>
+
+</html>

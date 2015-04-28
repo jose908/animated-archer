@@ -54,7 +54,12 @@ module.exports = {
     measurements: {
       collection: 'Measurement',
       via: 'sensorId'
+    },
+    alarms: {
+      collection: 'Alarm',
+      via: 'sensorId'
     }
+
   }
 
 

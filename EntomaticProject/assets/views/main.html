@@ -1,0 +1,74 @@
+<!-- Header -->
+<div ng-init="getInitValues()" > </div>
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-toggle"></span>
+    </button>
+    <a class="navbar-brand" href="#">Entomatic</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav pull-right">
+
+      <li dropdown>
+        <a dropdown-toggle><strong>{{initValues.user}}</strong><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </li>
+
+      <li><a href="/logout">Log out</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /Header -->
+
+<!-- Main -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <!-- Left -->
+      <strong>Menu</strong>
+      <hr>
+      <tabset vertical="true" type="pills">
+        <tab ui-sref='main.home' active="tabs[0].active">
+          <tab-heading>
+            <i class="glyphicon glyphicon-home"></i> &nbsp;Home
+          </tab-heading>
+        </tab>
+        <tab ui-sref="main.sensorLocation" active="tabs[1].active"  >
+          <tab-heading>
+            <i class="glyphicon glyphicon-map-marker"></i> &nbsp;Sensor Location
+          </tab-heading>
+        </tab>
+        <tab ui-sref="main.stadistics" active="tabs[2].active" >
+          <tab-heading>
+            <i class="glyphicon glyphicon-stats"></i> &nbsp;Stadistics
+          </tab-heading>
+        </tab>
+        <tab ui-sref='main.alarms' active="tabs[3].active" >
+          <tab-heading>
+            <i class="glyphicon glyphicon-bell"></i> &nbsp;Alarms <span class="badge">{{initValues.alarms }}</span>
+          </tab-heading>
+        </tab>
+        <tab  ui-sref='main.config' active="tabs[4].active">
+          <tab-heading>
+            <i class="glyphicon glyphicon-cog"></i> &nbsp;Configurations
+          </tab-heading>
+        </tab>
+      </tabset>
+    </div>
+
+  <!-- /span-3 -->
+
+    <!--TABS--->
+    <div class="col-md-10">
+      <div ui-view></div>
+
+    </div>
+  </div>
+</div>
+
+
+
+

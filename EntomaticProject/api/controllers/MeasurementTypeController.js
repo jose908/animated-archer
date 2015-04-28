@@ -6,6 +6,16 @@
  */
 
 module.exports = {
-	
-};
 
+  getMeasurementTypes: function (req, res) {
+
+    MeasurementType.find({}).exec(function findCB(err, found) {
+
+      res.json(found);
+
+
+    });
+
+  }
+
+}

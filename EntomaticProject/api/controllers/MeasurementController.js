@@ -22,7 +22,7 @@ module.exports = {
       }
     });
       //relative humidity
-      Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.temperature, measurementTypeId: 2}).exec(function createCB(err, created) {
+      Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.param('relative.humidity'), measurementTypeId: 2}).exec(function createCB(err, created) {
 
         if (err == null) {
           console.log('Created new sensor reading with id ' + created.sensorId + ' at' + created.createDate);
@@ -33,7 +33,7 @@ module.exports = {
         }
       });
       //light
-        Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.temperature, measurementTypeId: 3}).exec(function createCB(err, created) {
+        Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.light, measurementTypeId: 3}).exec(function createCB(err, created) {
 
           if (err == null) {
             console.log('Created new sensor reading with id ' + created.sensorId + ' at' + created.createDate);
@@ -45,7 +45,7 @@ module.exports = {
         });
         //voltage
           //relative humidity
-          Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.temperature, measurementTypeId: 4}).exec(function createCB(err, created) {
+          Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.voltage, measurementTypeId: 4}).exec(function createCB(err, created) {
 
             if( err == null) {
               console.log('Created new sensor reading with id '+ created.sensorId + ' at' + created.createDate);
@@ -62,7 +62,22 @@ module.exports = {
       res.badRequest();
     }
 
+  },
+
+  getSelectedMeasurement: function(req,res) {
+
+    Measurement.find( {sensorId: req.param('sensorId') , measurementTypeId: req.param('measurementTypeId') ,
+      createDate: { '>': req.param('from'), '<': req.param('to')}}).exec(function findCB(err,found) {
+
+      res.json(found);
+
+    });
+
+
+
   }
+
+
 
 
 

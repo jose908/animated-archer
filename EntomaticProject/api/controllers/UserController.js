@@ -112,11 +112,30 @@ module.exports = {
       return res.backToHomePage();
 
     });
+  },
+  getInitValues: function (req, res) {
+
+    User.findOne(req.session.me, function foundUser(err, user) {
+      Alarm.count({viewed: 'false'}).exec(function countCB(err, count) {
+      Alarm.watch(req);
+        Alarm.find({}).exec(function countCB(err, alarms) {
+        Alarm.subscribe(req.socket,alarms);
+        res.json({
+          user: user.user,
+          alarms: count
+        });
+        });
+
+
+      });
+    });
+
+
+
+
+
+
   }
-
-
-
-
 
 
 };

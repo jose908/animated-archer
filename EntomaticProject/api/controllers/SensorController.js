@@ -14,6 +14,7 @@ module.exports = {
 
     if( err == null) {
       console.log('Created new sensor record with id '+ created.sensorId + ' at ' + created.createDate);
+      Sensor.publishCreate(created);
       res.ok({sensorId: created.sensorId});
     }
      else {
@@ -24,16 +25,27 @@ module.exports = {
     });
 
   },
-  getAllSensors: function(req,res) {
+  getSensors: function(req,res) {
 
-    Sensor.find({}).exec(function findCB(err,found){
+    if (req.param('sensorId')) {
+
+      Sensor.findOne({sensorId:req.param('sensorId') }).exec(function findCB(err,found) {
+
         res.json(found);
-    });
 
+      });
+    }
+    else {
+      Sensor.find({}).exec(function findCB(err,found){
+        if(req.isSocket) {
+          Sensor.watch(req);
+        }
+        res.json(found);
+      });
 
+    }
 
-
-  }
+    }
 
 };
 
