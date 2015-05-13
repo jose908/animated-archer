@@ -1,41 +1,39 @@
 /**
- * Measurement.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/#!documentation/models
- */
+* Gateway.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
 
 module.exports = {
 
   connection: 'entomaticDb',
-  tableName: 'measurement',
+  tableName: 'gateway',
   autoCreatedAt: false,
   autoUpdatedAt: false,
+
   attributes: {
 
-    measurementId: {
+    gatewayId: {
       type: 'integer',
       primaryKey: true,
-      columnName: 'measurement_id',
+      columnName: 'gateway_id',
       autoIncrement : true
     },
-    sensorId: {
-      model: 'Sensor',
-      columnName: 'sensor_id'
-    },
-    epoch: {
-      type: 'integer',
+    latitude: {
+      type: 'float',
       required: true,
-      columnName: 'epoch'
+      columnName: 'latitude'
     },
-    sensorReading: {
+    longitude: {
+      type: 'float',
+      required: true,
+      columnName: 'longitude'
+    },
+    mac: {
       type: 'string',
       required: true,
-      columnName: 'sensor_reading'
-    },
-    measurementTypeId: {
-      model: 'MeasurementType',
-      columnName: 'measurement_type_id'
+      columnName: 'mac'
     },
     createDate: {
       type: 'datetime',
@@ -52,7 +50,14 @@ module.exports = {
       defaultsTo: function () {
         return new Date();
       }
+    },
+    sensor: {
+      collection: 'sensor',
+      via: 'gatewayId'
     }
+
+
+
 
   }
 };

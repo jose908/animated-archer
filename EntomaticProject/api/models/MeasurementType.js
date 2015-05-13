@@ -16,7 +16,7 @@ module.exports = {
     measurementTypeId: {
       primaryKey: true,
       type: 'integer',
-      required: true,
+      autoIncrement : true,
       columnName: 'measurement_type_id'
     },
     name: {
@@ -24,6 +24,18 @@ module.exports = {
       required: true,
       columnName: 'name'
     },
+    shortName: {
+      type: 'string',
+      required: true,
+      columnName: 'short_name'
+    },
+    units: {
+      type: 'string',
+      required: true,
+      columnName: 'units'
+    },
+
+
     measurements: {
       collection: 'measurement',
       via: 'measurementTypeId'

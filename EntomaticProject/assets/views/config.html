@@ -1,1 +1,72 @@
-<h1> Here you'll be able to configure cool things!</h1>
+<a><strong><span class="glyphicon glyphicon-map-marker"></span>&nbsp;Configurations</strong></a>
+  <hr>
+
+<div class="panel panel-default">
+  <div class="panel-heading">New measurement type</div>
+  <div class="panel-body">
+    <form name="measurementForm" ng-submit="newMeasurementType()" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <strong>Measurement Name</strong>
+        <input type="text" class="form-control" ng-model="MeasurementType.name" required>
+      </div>
+      <div class="col-md-3">
+        <strong>Units</strong>
+        <input type="text" class="form-control" ng-model="MeasurementType.units" required>
+      </div>
+
+      <div class="col-md-2">
+        <strong>Short Name</strong>
+        <input type="text" class="form-control" ng-model="MeasurementType.shortName" required>
+      </div>
+         </div>
+    <div class="row spacer"></div>
+    <button class='btn btn-success'ng-disabled="measurementForm.$invalid">New Measurement type</button>
+</form>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">New Alarm type</div>
+  <div class="panel-body">
+    <form name="alarmForm" ng-submit="newAlarmType()" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <strong>Alarm Name</strong>
+        <input type="text" class="form-control" ng-model="AlarmType.name" required>
+      </div>
+        <div class="col-md-2">
+        <strong>Short Name</strong>
+        <input type="text" class="form-control" ng-model="AlarmType.shortName" required>
+      </div>
+    </div>
+    <div class="row spacer"></div>
+    <button class='btn btn-danger' ng-disabled="alarmForm.$invalid">New Alarm type</button>
+</form>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">New User</div>
+  <div class="panel-body">
+    <form name="userForm" ng-submit="newUser()" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <strong>User Name</strong>
+        <input type="text" class="form-control" ng-model="user.name" required>
+      </div>
+      <div class="col-md-4">
+        <strong>Password</strong>
+        <input type="password"  name="password" class="form-control" ng-model="user.password" required>
+      </div>
+      <div class="col-md-1">
+        <strong>Admin</strong>
+        <input type="checkbox" value="false"  ng-model="user.isAdmin">
+      </div>
+    </div>
+    <div class="row spacer"></div>
+    <button class='btn btn-primary' ng-disabled="userForm.$invalid" >New User</button>
+  </form>
+  </div>
+</div>

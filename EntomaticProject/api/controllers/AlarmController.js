@@ -25,10 +25,10 @@ module.exports = {
     });
 
     if(isOk) {
-      res.ok();
+     return res.ok();
     }
     else {
-      res.badRequest();
+      return res.badRequest();
     }
   },
 
@@ -36,7 +36,7 @@ module.exports = {
 
     Alarm.find({viewed: false}).populate('alarmTypeId').exec(function createCB(err,created) {
 
-      res.json(created);
+      return res.json(created);
 
     });
   },
@@ -45,10 +45,11 @@ module.exports = {
 
     Alarm.update({alarmId: req.param('params')}, {viewed: true}).exec(function createCB(err, updated) {
       Alarm.publishUpdate(updated[0].alarmId);
-      res.ok();
+     return res.ok();
     });
 
   }
+
 
 
 

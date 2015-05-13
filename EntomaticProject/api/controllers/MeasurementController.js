@@ -9,58 +9,36 @@ module.exports = {
 
   newMeasurement: function (req, res) {
 
-    var isOk  = true;
-    //temperature
-    Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.temperature, measurementTypeId: 1}).exec(function createCB(err, created) {
+    Sensor.findOne({sensorId: req.param('sensor')}).exec(function findSensor (err,foundSensor) {
 
-      if (err == null) {
-        console.log('Created new sensor reading with id ' + created.sensorId + ' at' + created.createDate);
-      }
-      else {
-        console.log(err);
-        isOk = false;
-      }
-    });
-      //relative humidity
-      Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.param('relative.humidity'), measurementTypeId: 2}).exec(function createCB(err, created) {
+      if(foundSensor) {
 
-        if (err == null) {
-          console.log('Created new sensor reading with id ' + created.sensorId + ' at' + created.createDate);
-        }
-        else {
-          console.log(err);
-          isOk = false;
-        }
-      });
-      //light
-        Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.light, measurementTypeId: 3}).exec(function createCB(err, created) {
+        MeasurementType.find().exec (function findMeasurementsType (err,foundTypes) {
 
-          if (err == null) {
-            console.log('Created new sensor reading with id ' + created.sensorId + ' at' + created.createDate);
-          }
-          else {
-            console.log(err);
-            isOk = false;
-          }
-        });
-        //voltage
-          //relative humidity
-          Measurement.create({sensorId: req.body.sensor, counter: req.body.counter, sensorReading: req.body.voltage, measurementTypeId: 4}).exec(function createCB(err, created) {
+            for (var i in foundTypes) {
 
-            if( err == null) {
-              console.log('Created new sensor reading with id '+ created.sensorId + ' at' + created.createDate);
+              if (req.param(foundTypes[i].shortName)) {
+
+                Measurement.create({sensorId: req.param('sensor'), epoch: req.param('counter'),measurementTypeId: foundTypes[i].measurementTypeId, sensorReading: req.param(foundTypes[i].shortName)})
+                  .exec(function createMeasurement(err,createdMeasurement) {});
+
+              }
+
             }
-            else {
-              console.log(err);
-              isOk = false;
-            }
+          return res.ok('0|'+ req.param('sensor') + '|' + '*CLOS*');
+
+
           });
-    if(isOk) {
-      res.ok();
-    }
-    else {
-      res.badRequest();
-    }
+
+      }
+
+      else {
+
+        return res.ok('1|'+ req.param('sensor') + '|' + '*CLOS*');
+
+      }
+
+    });
 
   },
 
@@ -69,13 +47,11 @@ module.exports = {
     Measurement.find( {sensorId: req.param('sensorId') , measurementTypeId: req.param('measurementTypeId') ,
       createDate: { '>': req.param('from'), '<': req.param('to')}}).exec(function findCB(err,found) {
 
-      res.json(found);
+     return res.json(found);
 
     });
-
-
-
   }
+
 
 
 

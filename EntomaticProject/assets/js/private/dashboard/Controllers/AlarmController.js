@@ -3,7 +3,7 @@ angular.module('MainModule').controller('AlarmController', ['$scope', '$http', '
   /*LOCATION TAB */
 
   $scope.currentPage = 1;
-  $scope.numPerPage = 5;
+  $scope.numPerPage = 7;
 
 
   $scope.initFunction = function () {

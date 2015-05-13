@@ -4,8 +4,9 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
   /*LOCATION TAB */
 
   $scope.currentPage = 1;
-  $scope.numPerPage = 5;
+  $scope.numPerPage = 6;
   $scope.sensors = [];
+
 
 
 //capture events from the subscribed socket
@@ -53,7 +54,7 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
     $scope.clickedMarker = sensorId;
   }
     $scope.goToStadistics = function (index) {
-
+      console.log(index);
       $scope.go('main.stadistics', index);
 
     }

@@ -16,7 +16,7 @@ module.exports = {
     alarmTypeId: {
       primaryKey: true,
       type: 'integer',
-      required: true,
+      autoIncrement : true,
       columnName: 'alarm_type_id'
     },
     name: {
@@ -27,6 +27,11 @@ module.exports = {
     alarms: {
       collection: 'alarm',
       via: 'alarmTypeId'
+    },
+    shortName: {
+      type: 'string',
+      required: true,
+      columnName: 'short_name'
     }
   }
 

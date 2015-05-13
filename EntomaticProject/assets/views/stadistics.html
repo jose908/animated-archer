@@ -2,6 +2,8 @@
   <a><strong><span class="glyphicon glyphicon-stats"></span>&nbsp;Stadistics</strong></a>
 
   <hr>
+  <div class="panel panel-default">
+    <div class="panel-body">
   <div class="row">
   <div class="col-md-5">
     <strong>Node</strong>
@@ -13,12 +15,19 @@
        <span class="input-group-btn">
       <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button>
       </span>
+       <span class="input-group-btn" ng-show="severalSensors">
+      <button type="button" class="btn btn-default" ng-click="multipleSensors()"><i class="glyphicon glyphicon-plus"></i></button>
+      </span>
     </p>
   </div>
 
     <div class="col-md-5">
       <strong>Measurement type</strong>
       <select class="form-control" ng-model="selectedMeasurement" ng-change="changeMeasurementCombo()" ng-options="measurementType.name for measurementType in measurementTypes"><option> </option></select>
+    </div>
+    <div class="col-md-1">
+      <strong>multiple</strong>
+      <input type="checkbox" value="false"  ng-model="severalSensors" ng-click = 'multipleSensors()'>
     </div>
       </div>
 
@@ -47,8 +56,13 @@
      </div>
   </div>
 
+    </div>
+  </div>
 
+  <div class="panel panel-default">
+    <div class="panel-body">
 
-  <div google-chart chart="chartObject" style="height:700px; width:1000px"></div>
+  <div google-chart chart="chartObject" style="height:700px; width:900px"></div>
 
-
+    </div>
+  </div>

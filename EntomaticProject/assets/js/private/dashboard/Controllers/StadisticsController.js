@@ -1,5 +1,9 @@
 angular.module('MainModule').controller('StadisticsController', ['$scope', '$http', '$window','serverRequestService','$stateParams', function ($scope, $http, $window, serverRequestService,$stateParams) {
 
+  $scope.periodTypes = [{name:'Today', count: 0},{name:'Yesterday', count: 1}, {name:'Last 7 days', count: 7}, {name:'Last 30 days',count: 30},{name: 'Custom Date'} ];
+  $scope.severalSensors = false;
+  $scope.multipleSensorsList = [];
+
   $scope.viewMap =function() {
        $scope.go('main.sensorLocation',JSON.stringify($scope.selectedNode));
 
@@ -16,19 +20,18 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
       $scope.dateSelection = false;
 
     }
-    getMeasumentsData();
-
+    if(!$scope.severalSensors) {
+      getMeasumentsData();}
   }
     $scope.loadCombos = function () {
     serverRequestService.getAllSensors()
       .success(function (data, status, headers, config) {
-        data.unshift({sensorId:'All'});
         $scope.sensors = data;
          if ($stateParams.param != "noSensor") {
-          $scope.selectedNode = $scope.sensors[$stateParams.param + 1];
+          $scope.selectedNode = $scope.sensors[$stateParams.param];
         }
         else {
-          $scope.selectedNode = $scope.sensors[1];
+          $scope.selectedNode = $scope.sensors[0];
         }
 
 
@@ -37,7 +40,6 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
       .success(function (data, status, headers, config) {
         $scope.measurementTypes = data;
         $scope.selectedMeasurement =  $scope.measurementTypes[0];
-        $scope.periodTypes = [{name:'Today', count: 0},{name:'Yesterday', count: 1}, {name:'Last 7 days', count: 7}, {name:'Last 30 days',count: 30},{name: 'Custom Date'} ];
         $scope.selectedPeriodType = $scope.periodTypes[2];
         getMeasumentsData();
       }));
@@ -46,12 +48,14 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
 
   $scope.changeSensorCombo =function() {
 
-    getMeasumentsData();
+    if(!$scope.severalSensors) {
+        getMeasumentsData();}
 
   }
   $scope.changeMeasurementCombo =function() {
 
-    getMeasumentsData();
+    if(!$scope.severalSensors) {
+      getMeasumentsData();}
 
   }
    //gets measurements for selected options
@@ -99,8 +103,11 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
           cols = [{id: 'createdAt', label: 'Created at', type: 'datetime'},
             {id: 'node', label:'Node ' +  $scope.selectedNode.sensorId +' ' + $scope.selectedMeasurement.name , type: 'number'}];
           var rows = [];
+
          for (var i in data) {
+
            rows.push ({c:[{v: new Date(data[i].createDate)}, {v: parseFloat(data[i].sensorReading)}]});
+
          }
 
         $scope.chartObject = {
@@ -111,11 +118,12 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
             "rows": rows},
            "options": {
                "title": "Sensor readings",
+             "interpolateNulls": true,
              "isStacked": "true",
              "fill": 20,
              "displayExactValues": true,
              "vAxis": {
-               "title": $scope.selectedMeasurement.name,
+               "title": $scope.selectedMeasurement.name + ' ('+ $scope.selectedMeasurement.units+ ')',
                "gridlines": {
                  "count": 12
                }
@@ -125,7 +133,7 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
                  count: -1,
                  units: {
                    days: {format: ["MMM dd"]},
-                   hours: {format: ["HH:mm", "ha"]},
+                   hours: {format: ["HH:mm", "ha"]}
                  }
                },
                minorGridlines: {
@@ -171,6 +179,28 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
 
   $scope.selectDate = function() {
     getMeasumentsData();
+  }
+
+  $scope.multipleSensors = function() {
+
+    addMultiplesensorsList();
+
+
+
+  }
+
+  addMultiplesensorsList = function () {
+
+    $scope.multipleSensorsList.push($scope.selectedNode);
+
+
+  }
+
+  deleteMultiplesensorsList = function () {
+
+
+
+
   }
 
 

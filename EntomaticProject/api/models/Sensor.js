@@ -58,6 +58,10 @@ module.exports = {
     alarms: {
       collection: 'Alarm',
       via: 'sensorId'
+    },
+    gatewayId: {
+      model: 'Gateway',
+      columnName: 'gateway_id'
     }
 
   }

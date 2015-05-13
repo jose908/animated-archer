@@ -38,6 +38,8 @@ module.exports.routes = {
 
   // User enrollment + authentication
   'POST /signup': 'UserController.signup',
+  'POST /newMeasurementType': 'MeasurementTypeController.newMeasurementType',
+  'POST /newAlarmType': 'AlarmTypeController.newAlarmType',
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
   'GET /getSensors': 'SensorController.getSensors',
@@ -48,15 +50,11 @@ module.exports.routes = {
   'PUT /setViewedAlarm': 'AlarmController.setViewedAlarm',
 
 
-
-
-
-  /*SENSOR API */
-  'post /newsensor': 'SensorController.newSensor',
-
-  'post /newMeasurement':'MeasurementController.newMeasurement',
-
-  'post /newAlarm': 'AlarmController.newAlarm'
+  /*WSN API */
+  'get /newGateway': 'GatewayController.newGateway',
+  'get /newSensor': 'SensorController.newSensor',
+  'get /newMeasurement':'MeasurementController.newMeasurement',
+  'get /newAlarm': 'AlarmController.newAlarm'
 
 
 
