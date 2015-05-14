@@ -17,22 +17,27 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  entomaticDb: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: 'postgres',
+    password: '12345678',
+    database: 'Entomatic',
+    schema: 'Entomatic'
+  },
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
 
-  // port: 80,
+  port: 80,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
 
-  // log: {
-  //   level: "silent"
-  // }
+  log: {
+     level: "silent"
+  }
 
 };
