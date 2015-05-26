@@ -3,9 +3,19 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
 
   /*LOCATION TAB */
 
-  $scope.currentPage = 1;
-  $scope.numPerPage = 6;
-  $scope.sensors = [];
+    $scope.currentPageSensor = 1;
+    $scope.currentPageGateway = 1;
+    $scope.numPerPage = 6;
+    $scope.sortTypes = [{name: 'Sort by Date Asc', query: 'createDate ASC'}, {name: 'Sort by Date Desc', query: 'createDate DESC'}, {name: 'Sort by Gateway', query: 'gatewayId ASC'}];
+
+    $scope.status = {
+      openGateway: true,
+      openSensor:true
+
+    };
+
+    $scope.sensors = [];
+    $scope.icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
 
 
@@ -23,13 +33,24 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
 
   $scope.loadLocationTab = function (isRefresh) {
 
-    $scope.isMapLoaded = false;
-    serverRequestService.getAllSensors()
-      .success(function (data, status, headers, config) {
-        $scope.sensors = data;
+    if (!isRefresh) {
+    $scope.selectedSortType = $scope.sortTypes[0];
+      $scope.isMapLoaded = false;
+    }
+
+
+    serverRequestService.getGateways().then(function (response) {
+
+      $scope.gatewayList = response.data;
+      console.log ( $scope.selectedSortType.query);
+
+      return  serverRequestService.getAllSensors({query: $scope.selectedSortType.query});
+
+    }).then(function (response) {
+        $scope.sensors = response.data;
         $scope.animation = { animation: google.maps.Animation.DROP };
         if (!isRefresh) {
-          $scope.map = {center: {latitude: 41.4042, longitude: 2.195}, zoom: 12};
+          $scope.map = {center: {latitude: $scope.sensors[0].latitude, longitude: $scope.sensors[0].longitude}, zoom: 10};
         }
         $scope.isMapLoaded = true;
 
@@ -47,17 +68,35 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
 
   }
   $scope.goToMarker = function (latitude, longitude, sensorId) {
-    $scope.map = {center: {latitude: latitude, longitude: longitude}, zoom: 17};
-    $scope.clickedMarker = sensorId;
+    if (!$scope.notSensor) {
+      $scope.map = {center: {latitude: latitude, longitude: longitude}, zoom: 17};
+      $scope.clickedMarkerGateway = null;
+      $scope.clickedMarkerSensor = sensorId;
+    }
+    $scope.notSensor = false;
   }
+
   $scope.closeClick = function (sensorId) {
-    $scope.clickedMarker = sensorId;
+    $scope.clickedMarkerSensor = sensorId;
   }
-    $scope.goToStadistics = function (index) {
-      console.log(index);
-      $scope.go('main.stadistics', index);
+    $scope.goToStatistics = function (index) {
+      $scope.go('main.statistics', index);
 
     }
+    $scope.goToMarkerGateway = function (latitude, longitude, sensorId, isGateway) {
+      $scope.map = {center: {latitude: latitude, longitude: longitude}, zoom: 17};
+      if (isGateway) {
+      $scope.notSensor = true; }
+      $scope.clickedMarkerSensor = null;
+      $scope.clickedMarkerGateway = sensorId;
+    }
+    $scope.changeSortCombo = function (selectedSortType) {
+      $scope.selectedSortType = selectedSortType;
+      $scope.loadLocationTab(true);
+
+    }
+
+
 
 
 

@@ -22,13 +22,13 @@ angular.module('MainModule').config(function($stateProvider, $urlRouterProvider)
       templateUrl: '/views/sensorLocation.html',
       controller: 'SensorLocationController'
     })
-    .state('main.stadistics', {
-      url: '/stadistics',
+    .state('main.statistics', {
+      url: '/statistics',
       params: {
         param: 'noSensor'
       },
-      templateUrl: '/views/stadistics.html',
-      controller:'StadisticsController'
+      templateUrl: '/views/statistics.html',
+      controller:'StatisticsController'
     })
     .state('main.alarms', {
       url: '/alarms',

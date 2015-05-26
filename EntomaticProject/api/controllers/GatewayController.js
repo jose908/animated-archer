@@ -17,7 +17,11 @@ module.exports = {
         //if so, we send to the gateway the current inserted value
       if(foundGateway) {
 
-        return res.ok('0|'+ moment(foundGateway.createDate).format("YYYYMMDDHHmmss") + '|' + foundGateway.mac + '|*CLOS*');
+        Gateway.update({mac: req.param('idgw')},{updateDate: new Date()}).exec (function (err,updatedGateway ) {
+
+          return res.ok('0|' + moment(updatedGateway.updateDate).format("YYYYMMDDHHmmss") + '|' + req.param('idgw') + '|');
+
+        });
 
       }
       else {
@@ -26,12 +30,12 @@ module.exports = {
         //if not, we insert the new gateway
           if(createdGateway) {
 
-            return res.ok('0|'+ moment(createdGateway.createDate).format("YYYYMMDDHHmmss") + '|' + createdGateway.mac + '|*CLOS*');
+            return res.ok('0|'+ moment(createdGateway.createDate).format("YYYYMMDDHHmmss") + '|' + createdGateway.mac + '|');
 
           }
           if (err) {
 
-           return res.ok('1|' +req.param('idgw') + '|*CLOS*');
+           return res.ok('1|' +req.param('idgw') + '|');
 
           }
 
@@ -41,9 +45,43 @@ module.exports = {
 
     });
 
+  },
 
+  getGateways: function(req,res) {
+
+      Gateway.find({}).populate('sensor').exec(function findGateway(err,found){
+
+        return res.json(found);
+      });
+
+    },
+
+  getDailyReport: function (req,res) {
+
+    var moment = require('moment');
+
+
+    Gateway.count().exec (function countGateway (err, totalGateways) {
+
+      Sensor.count().exec (function countSensor (err, totalSensor) {
+
+        Measurement.find({createDate:{'>': moment().subtract(1, 'days').startOf('day')._d }}).populate('measurementTypeId').exec( function findMeasurement (err,foundMeasurement) {
+
+          return res.json ({
+          countGateways: totalGateways,
+          countSensor: totalSensor,
+            lastMeasurement: foundMeasurement});
+
+          });
+
+        });
+
+
+      });
 
   }
+
+
 
 }
 

@@ -12,23 +12,26 @@
 
 
   <link rel="stylesheet" href="/styles/bootstrap.css">
-
+  <link rel="stylesheet" href="/styles/nya-bs-select.css">
   <script src="/js/dependencies/angular.js"></script>
+  <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/dependencies/ng-google-chart.js"></script>
   <script src="/js/dependencies/angular-ui-router.js"></script>
-  <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/dependencies/moment.js"></script>
+  <script src="/js/dependencies/ng-csv.js"></script>
+  <script src="/js/dependencies/angular-sanitize.js"></script>
   <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
   <script src="/js/dependencies/angular-google-maps.js"></script>
   <script src="/js/dependencies/angular-moment.js"></script>
   <script src="/js/dependencies/lodash.js"></script>
   <script src="/js/dependencies/ui-bootstrap.js"></script>
+  <script src="/js/dependencies/nya-bs-select.js"></script>
   <script src="/js/private/dashboard/MainModule.js"></script>
   <script src="/js/private/dashboard/Router/MainRouter.js"></script>
   <script src="/js/private/dashboard/Services/ServerRequestService.js"></script>
   <script src="/js/private/dashboard/Controllers/MainController.js"></script>
   <script src="/js/private/dashboard/Controllers/SensorLocationController.js"></script>
-  <script src="/js/private/dashboard/Controllers/StadisticsController.js"></script>
+  <script src="/js/private/dashboard/Controllers/StatisticsController.js"></script>
   <script src="/js/private/dashboard/Controllers/AlarmController.js"></script>
   <script src="/js/private/dashboard/Controllers/ConfigController.js"></script>
   <script src="/js/private/dashboard/Controllers/HomeController.js"></script>
@@ -39,6 +42,19 @@
 </head>
 <body>
 <div ui-view></div>
+
+<div class="container">
+<footer>
+  <hr>
+      <div class="col-md-12">
+        <div class="text-center">
+        <p>2015 Entomatic Project
+          <br>More info <a href="http://entomatic.upf.edu/project">here</a>.</p>
+        </div>
+      </div>
+</div>
+</footer>
+
 </body>
 
 </html>

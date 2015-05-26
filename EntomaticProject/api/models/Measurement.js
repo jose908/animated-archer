@@ -1,7 +1,7 @@
 /**
  * Measurement.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @description :: The measurement model for storing the measurements from the sensor
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 

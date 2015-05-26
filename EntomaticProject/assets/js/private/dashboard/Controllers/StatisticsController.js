@@ -1,8 +1,19 @@
-angular.module('MainModule').controller('StadisticsController', ['$scope', '$http', '$window','serverRequestService','$stateParams', function ($scope, $http, $window, serverRequestService,$stateParams) {
+angular.module('MainModule').controller('StatisticsController', ['$scope', '$http', '$window','serverRequestService','$stateParams', function ($scope, $http, $window, serverRequestService,$stateParams) {
 
   $scope.periodTypes = [{name:'Today', count: 0},{name:'Yesterday', count: 1}, {name:'Last 7 days', count: 7}, {name:'Last 30 days',count: 30},{name: 'Custom Date'} ];
   $scope.severalSensors = false;
   $scope.multipleSensorsList = [];
+  $scope.measurementsTable = [];
+  $scope.currentPage = 1;
+  $scope.numPerPage = 7;
+
+  var sensorsToFind = [];
+  var initialInit= true;
+
+  io.socket.on("measurement", function ServerSentEvent (event) {
+    getMeasumentsData();
+
+  });
 
   $scope.viewMap =function() {
        $scope.go('main.sensorLocation',JSON.stringify($scope.selectedNode));
@@ -13,50 +24,62 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
   $scope.changePeriodCombo =function() {
 
     if ($scope.selectedPeriodType.name == 'Custom Date') {
-      $scope.dateSelection = true;
-    }
-    else {
+            $scope.dateSelection = true;
+          }
+        else {
 
-      $scope.dateSelection = false;
+             $scope.dateSelection = false;
 
-    }
-    if(!$scope.severalSensors) {
-      getMeasumentsData();}
+            }
+        getMeasumentsData();
   }
     $scope.loadCombos = function () {
     serverRequestService.getAllSensors()
-      .success(function (data, status, headers, config) {
-        $scope.sensors = data;
+      .then(function (response) {
+        $scope.sensors = response.data;
          if ($stateParams.param != "noSensor") {
-          $scope.selectedNode = $scope.sensors[$stateParams.param];
+
+           var index;
+           for (var i in $scope.sensors) {
+
+             if ($scope.sensors[i].sensorId == $stateParams.param) {
+
+               index = i;
+               break;
+             }
+
+           }
+
+          $scope.selectedNode = $scope.sensors[index];
         }
         else {
           $scope.selectedNode = $scope.sensors[0];
         }
-
-
-      }).then(
-    serverRequestService.getAllMeasurementTypes()
-      .success(function (data, status, headers, config) {
-        $scope.measurementTypes = data;
+      return serverRequestService.getAllMeasurementTypes();
+      })
+      .then(function (response) {
+        $scope.measurementTypes = response.data;
         $scope.selectedMeasurement =  $scope.measurementTypes[0];
-        $scope.selectedPeriodType = $scope.periodTypes[2];
+        $scope.selectedPeriodType = $scope.periodTypes[1];
+        //We use this socket connection to get subscribed to the event of new measurement
+        io.socket.get('/getAllMeasurement', function (body, response) {});
+      }).then(function () {
+
         getMeasumentsData();
-      }));
+
+      });
 
     }
 
   $scope.changeSensorCombo =function() {
 
-    if(!$scope.severalSensors) {
-        getMeasumentsData();}
-
+        getMeasumentsData();
   }
+
+
   $scope.changeMeasurementCombo =function() {
 
-    if(!$scope.severalSensors) {
-      getMeasumentsData();}
-
+      getMeasumentsData();
   }
    //gets measurements for selected options
   getMeasumentsData = function() {
@@ -72,8 +95,23 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
       to = moment().endOf('day')._d;
       }
 
-    serverRequestService.getSelectedMeasurement({sensorId: $scope.selectedNode.sensorId, measurementTypeId: $scope.selectedMeasurement.measurementTypeId, from: from , to: to })
+    if ($scope.severalSensors) {
+
+      for (var i in $scope.selectedMultipleNodes) {
+
+        sensorsToFind.push($scope.selectedMultipleNodes[i].sensorId);
+      }
+
+    }
+    else {
+      sensorsToFind.push ($scope.selectedNode.sensorId);
+
+    }
+
+    serverRequestService.getSelectedMeasurement({sensorId: sensorsToFind, measurementTypeId: $scope.selectedMeasurement.measurementTypeId, from: from , to: to })
       .success(function (data, status, headers, config) {
+
+        $scope.measurementsTable = data;
 
         if(data.length == 0) {
 
@@ -97,16 +135,37 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
 
            }
        }
+          initialInit = false;
+          sensorsToFind = [];
         }
        else {
 
-          cols = [{id: 'createdAt', label: 'Created at', type: 'datetime'},
-            {id: 'node', label:'Node ' +  $scope.selectedNode.sensorId +' ' + $scope.selectedMeasurement.name , type: 'number'}];
-          var rows = [];
+          cols= [];
+          cols.push({id: 'createdAt', label: 'Created at', type: 'datetime'});
 
+          for (var i in sensorsToFind) {
+            cols.push({id: 'node', label:'Node ' +  sensorsToFind[i] , type: 'number'});
+
+          }
+
+          var rows = [];
+          var aux = [];
          for (var i in data) {
 
-           rows.push ({c:[{v: new Date(data[i].createDate)}, {v: parseFloat(data[i].sensorReading)}]});
+           aux.push({v: new Date(data[i].createDate)});
+           for (var j in sensorsToFind) {
+
+             if (sensorsToFind[j] == data[i].sensorId) {
+
+               aux.push({v: parseFloat(data[i].sensorReading)});
+
+             }
+             else {
+               aux.push(null);
+             }
+           }
+           rows.push ({c:aux});
+           var aux = [];
 
          }
 
@@ -122,6 +181,7 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
              "isStacked": "true",
              "fill": 20,
              "displayExactValues": true,
+             chartArea: { top: 70, height: '80%' },
              "vAxis": {
                "title": $scope.selectedMeasurement.name + ' ('+ $scope.selectedMeasurement.units+ ')',
                "gridlines": {
@@ -147,9 +207,13 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
            "formatters": {}
 
          }
+          initialInit = false;
+          sensorsToFind = [];
        }
 
       });
+
+
 
   }
 
@@ -181,27 +245,19 @@ angular.module('MainModule').controller('StadisticsController', ['$scope', '$htt
     getMeasumentsData();
   }
 
-  $scope.multipleSensors = function() {
+  $scope.$watch('selectedMultipleNodes', function() {
 
-    addMultiplesensorsList();
+    if(!initialInit) {
+      getMeasumentsData();
+    }
+  });
 
+  $scope.getMultipleMeasurements = function() {
 
-
-  }
-
-  addMultiplesensorsList = function () {
-
-    $scope.multipleSensorsList.push($scope.selectedNode);
-
+    getMeasumentsData();
 
   }
 
-  deleteMultiplesensorsList = function () {
-
-
-
-
-  }
 
 
 

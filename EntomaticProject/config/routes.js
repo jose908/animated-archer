@@ -46,15 +46,19 @@ module.exports.routes = {
   'GET /getMeasurementTypes': 'MeasurementTypeController.getMeasurementTypes',
   'GET /getInitValues': 'UserController.getInitValues',
   'GET /getSelectedMeasurement': 'MeasurementController.getSelectedMeasurement',
+  'GET /getAllMeasurement': 'MeasurementController.getAllMeasurement',
   'GET /getUnviewedAlarms': 'AlarmController.getUnviewedAlarms',
   'PUT /setViewedAlarm': 'AlarmController.setViewedAlarm',
+  'GET /getGateways': 'GatewayController.getGateways',
+  'GET /getDailyReport': 'GatewayController.getDailyReport',
+
 
 
   /*WSN API */
-  'get /newGateway': 'GatewayController.newGateway',
-  'get /newSensor': 'SensorController.newSensor',
-  'get /newMeasurement':'MeasurementController.newMeasurement',
-  'get /newAlarm': 'AlarmController.newAlarm'
+  'GET /newGateway': 'GatewayController.newGateway',
+  'GET /newSensor': 'SensorController.newSensor',
+  'GET /newMeasurement':'MeasurementController.newMeasurement',
+  'GET /newAlarm': 'AlarmController.newAlarm'
 
 
 

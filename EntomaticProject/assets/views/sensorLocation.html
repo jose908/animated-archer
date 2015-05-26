@@ -14,28 +14,100 @@
   <ui-gmap-google-map center='map.center' zoom='map.zoom'>
 
     <ui-gmap-marker data-ng-repeat="sensor in sensors" idkey="sensor.sensorId" coords="sensor"
-                    click="closeClick(sensor.sensorId)" options="animation" >
-      <ui-gmap-window show="clickedMarker==sensor.sensorId" ng-cloak>
+                     options="animation" >
+      <ui-gmap-window show="clickedMarkerSensor==sensor.sensorId" ng-cloak>
         <div>
           <h5>Sensor {{sensor.sensorId}}</h5> <br>
           Latitude: {{sensor.latitude}}<br>
           Longitude: {{sensor.longitude}}<br>
-          mac: {{sensor.mac}}<br><br>
-          <p><button type="button" class="btn btn-default" ng-click="$parent.goToStadistics($parent.$index)"><i class="glyphicon glyphicon-stats"></i></button>
-          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></p>
+          mac: {{sensor.mac}}<br>
+          Gateway Id: {{sensor.gatewayId.gatewayId}}<br><br>
+          <p><button title="Access to sensor's statistics" type="button" class="btn btn-default" ng-click='$parent.goToStatistics("{{sensor.sensorId}}")'><i class="glyphicon glyphicon-stats"></i></button>
+          <button title="Access to sensor's alarms"type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></p>
         </div>
       </ui-gmap-window>
 
     </ui-gmap-marker>
 
+    <ui-gmap-marker data-ng-repeat="gateway in gatewayList" idkey="gateway.gatewayId" coords="gateway"
+                    options="animation" icon="icon">
+      <ui-gmap-window show="clickedMarkerGateway==gateway.gatewayId" ng-cloak>
+        <div>
+          <h5>Gateway {{gateway.gatewayId}}</h5> <br>
+          Latitude: {{gateway.latitude}}<br>
+          Longitude: {{gateway.longitude}}<br>
+          mac: {{gateway.mac}}<br><br>
+
+        </div>
+      </ui-gmap-window>
+
+    </ui-gmap-marker>
+
+
+
   </ui-gmap-google-map>
   <div class="row spacer"></div>
 
   <accordion>
-  <accordion-group is-open="true">
+    <accordion-group is-open="status.openGateway">
+      <accordion-heading>
+        Gateway List <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.openGateway, 'glyphicon-chevron-right': !status.openGateway}"></i>
+      </accordion-heading>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>Gateway id</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>mac</th>
+            <th>Created at</th>
+
+
+          </tr>
+          </thead>
+          <tbody ng-repeat="gateway in gatewayList.slice(((currentPageGateway-1)*numPerPage), ((currentPageGateway)*numPerPage))"
+                 ng-click="goToMarkerGateway(gateway.latitude, gateway.longitude, gateway.gatewayId, false)">
+          <tr>
+            <td>{{gateway.gatewayId}}</td>
+            <td>{{gateway.latitude}}</td>
+            <td>{{gateway.longitude}}</td>
+            <td>{{gateway.mac}}</td>
+            <td>{{gateway.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+
+
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5" class="text-center">
+              <pagination
+                ng-model="currentPageGateway"
+                total-items="gatewayList.length"
+                items-per-page = "numPerPage"
+                boundary-links="true"
+                class="pagination-sm">
+              </pagination>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </accordion-group>
+  </accordion>
+
+  <accordion>
+
+
+  <accordion-group is-open="status.openSensor">
     <accordion-heading>
-     <stronng>Sensor List</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+     <stronng>Sensor List</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.openSensor, 'glyphicon-chevron-right': !status.openSensor}"></i>
     </accordion-heading>
+   <div class="row">
+           <div class="col-md-3 pull-right">
+             <select class="form-control" ng-model="selectedSortType" ng-change="changeSortCombo(selectedSortType)" ng-options="sortType.name for sortType in sortTypes"></select>
+      </div>
+    </div>
          <div class="table-responsive">
           <table class="table table-striped table-hover">
           <thead>
@@ -45,11 +117,12 @@
             <th>Longitude</th>
             <th>mac</th>
             <th>Created at</th>
+            <th>Gateway</th>
 
 
           </tr>
           </thead>
-          <tbody ng-repeat="sensor in sensors.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))"
+          <tbody ng-repeat="sensor in sensors.slice(((currentPageSensor-1)*numPerPage), ((currentPageSensor)*numPerPage))"
                  ng-click="goToMarker(sensor.latitude, sensor.longitude, sensor.sensorId)">
           <tr>
             <td>{{sensor.sensorId}}</td>
@@ -57,8 +130,9 @@
             <td>{{sensor.longitude}}</td>
             <td>{{sensor.mac}}</td>
             <td>{{sensor.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
-            <td><button type="button" class="btn btn-default" ng-click="goToStadistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-stats"></i></button></td>
-            <td><button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></td>
+            <td><button type="button" title="Locate sensor's Gateway" class="btn btn-default" ng-click="goToMarkerGateway(sensor.gatewayId.latitude, sensor.gatewayId.longitude, sensor.gatewayId.gatewayId, true)">{{sensor.gatewayId.gatewayId}}</button></td>
+            <td><button type="button"title="Access to sensor's statistics" class="btn btn-default" ng-click="goToStatistics(sensor.sensorId)"><i class="glyphicon glyphicon-stats"></i></button></td>
+            <td><button type="button"title="Access to sensor's alarms" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></td>
 
           </tr>
           </tbody>
@@ -66,9 +140,9 @@
           <tr>
             <td colspan="5" class="text-center">
               <pagination
-                ng-model="currentPage"
+                ng-model="currentPageSensor"
                 total-items="sensors.length"
-                items-per-page = "numPerPage"
+                items-per-page = "numPerPageSensor"
                 boundary-links="true"
                 class="pagination-sm">
               </pagination>

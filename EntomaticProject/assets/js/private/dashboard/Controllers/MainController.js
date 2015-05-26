@@ -6,7 +6,7 @@ angular.module('MainModule').controller('MainController', ['$scope', '$http', '$
   $scope.tabs = [
     {route: "main.home", active: false},
     {route: "main.sensorLocation", active: false},
-    {route: "main.stadistics", active: false},
+    {route: "main.statistics", active: false},
     {route: "main.alarms", active: false},
     {route: "main.config", active: false}
   ];

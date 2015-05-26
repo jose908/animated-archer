@@ -2,8 +2,8 @@ angular.module('MainModule').factory('serverRequestService', ['$http', function(
 
   var dataFactory = {};
 
-  dataFactory.getAllSensors = function () {
-    return $http.get('/getSensors');
+  dataFactory.getAllSensors = function (param) {
+    return $http.get('/getSensors', {params: param});
   };
   dataFactory.getAllMeasurementTypes = function () {
     return $http.get('/getMeasurementTypes');
@@ -26,6 +26,13 @@ angular.module('MainModule').factory('serverRequestService', ['$http', function(
   dataFactory.newAlarmType = function (param) {
     return $http.post('/newAlarmType',param);
   };
+  dataFactory.getGateways = function (param) {
+    return $http.get('/getGateways',{params: param});
+  };
+  dataFactory.getDailyReport = function (param) {
+    return $http.get('/getDailyReport',{params: param});
+  };
+
 
   return dataFactory;
 

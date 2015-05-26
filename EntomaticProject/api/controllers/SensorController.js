@@ -16,12 +16,15 @@ module.exports = {
 
         if (req.param('idgw') == foundSensor.gatewayId.mac ) {
 
-          return res.ok('0|' + foundSensor.mac + '|' + foundSensor.sensorId + '|' + '*CLOS*');
+          Sensor.update({mac: req.param('id')},{updateDate: new Date()}).exec (function (err,updatedGateway ) {
+
+            return res.ok('0|' + foundSensor.mac + '|' + foundSensor.sensorId + '|');
+          });
 
         }
         else {
 
-          return res.ok('1|' + foundSensor.mac + '|' + '*CLOS*');
+          return res.ok('1|' + foundSensor.mac + '|');
 
         }
       }
@@ -33,15 +36,15 @@ module.exports = {
           if (foundGateway) {
 
             Sensor.create({latitude: req.param('lat'), longitude: req.param('lon'), mac: req.param('id'), gatewayId:foundGateway.gatewayId }).exec (function createdSensor (err, createdSensor) {
-
-             return res.ok('0|' + createdSensor.mac + '|' + createdSensor.sensorId + '|' + '*CLOS*');
+              Sensor.publishCreate(createdSensor);
+              return res.ok('0|' + createdSensor.mac + '|' + createdSensor.sensorId + '|');
 
             });
 
             }
           else {
 
-           return res.ok('1|' + req.param('id') + '|' + '*CLOS*');
+           return res.ok('1|' + req.param('id') + '|');
 
           }
 
@@ -66,7 +69,7 @@ module.exports = {
       });
     }
     else {
-      Sensor.find({}).exec(function findCB(err,found){
+      Sensor.find({where:{}, sort: req.param('query')}).populate('gatewayId').exec(function findCB(err,found){
         if(req.isSocket) {
           Sensor.watch(req);
         }

@@ -24,7 +24,7 @@
           <td><span class="label label-danger">{{unViewedAlarm.value}}</span></td>
           <td>{{unViewedAlarm.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
           <td><button type="button" class="btn btn-success btn-sm" ng-click="markAsViewed( ((currentPage-1)*numPerPage)+ $index, unViewedAlarm.alarmId)">viewed</button></td>
-          <td><button type="button" class="btn btn-default" ng-click="goToStadistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-map-marker"></i></button></td>
+          <td><button type="button" class="btn btn-default" ng-click="goToStatistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-map-marker"></i></button></td>
           <td><button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-stats"></i></button></td>
 
         </tr>

@@ -1,0 +1,128 @@
+<div ng-init="loadCombos()" ng-cloak> <div>
+  <a><strong><span class="glyphicon glyphicon-stats"></span>&nbsp;Statistics</strong></a>
+  <a title="Export table data to csv" ng-csv="measurementsTable"  filename="stats.csv"
+     class="btn btn-default pull-right">Export to CSV</span></a>
+
+  <hr>
+  <div class="panel panel-default">
+    <div class="panel-body">
+  <div class="row">
+  <div class="col-md-5" ng-show="!severalSensors" >
+    <strong>Node</strong>
+    <p class="input-group">
+    <select class="form-control" ng-model="selectedNode" ng-change="changeSensorCombo()" ng-options="sensor.sensorId for sensor in sensors"></select>
+      <span class="input-group-btn">
+      <button type="button" title="Access to sensor's location" class="btn btn-default" ng-click="viewMap()"><i class="glyphicon glyphicon-map-marker"></i></button>
+      </span>
+       <span class="input-group-btn">
+      <button type="button" title="Access to sensor's alarms" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button>
+      </span>
+    </p>
+    </div>
+
+    <div class="col-md-5" ng-show="severalSensors">
+      <strong>Multiple Nodes</strong>
+      <p>
+      <ol class="nya-bs-select spacerMargin" ng-model="selectedMultipleNodes" multiple>
+        <li nya-bs-option="sensor in sensors">
+          <a>
+            {{ sensor.sensorId }}
+            <span class="glyphicon glyphicon-ok check-mark"></span>
+          </a>
+        </li>
+      </ol>
+      </p>
+    </div>
+
+      <div class="col-md-5">
+      <strong>Measurement type</strong>
+      <select class="form-control" ng-model="selectedMeasurement" ng-change="changeMeasurementCombo()" ng-options="measurementType.name for measurementType in measurementTypes"></select>
+    </div>
+    <div class="col-md-1">
+      <strong>Multiple</strong>
+      <input type="checkbox" value="false"  ng-model="severalSensors" ng-click = "getMultipleMeasurements()" >
+    </div>
+      </div>
+
+   <div class="row">
+
+     <div class="col-md-5">
+       <strong>Period</strong>
+       <select class="form-control" ng-model="selectedPeriodType" ng-change="changePeriodCombo()" ng-options="periodType.name for periodType in periodTypes"></select>
+     </div>
+
+     <div class="col-md-5" ng-show="dateSelection">
+       <strong>From</strong>
+       <p class="input-group">
+         <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fromDate" is-open="openedFrom"  datepicker-options="dateOptions" ng-change="selectDate()" ng-required="true" show-button-bar="false" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+       </p>
+       <strong>To</strong>
+       <p class="input-group">
+         <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="toDate" is-open="openedTo"  datepicker-options="dateOptions" ng-change="selectDate()" ng-required="true" show-button-bar="false"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+       </p>
+     </div>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+  <div google-chart chart="chartObject" style="height:600px; width:925px"></div>
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+
+      <div class="table ">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Node</th>
+            <th>{{selectedMeasurement.name}} ({{selectedMeasurement.units}}) </th>
+            <th>Date</th>
+
+          </tr>
+          </thead>
+          <tbody ng-repeat="measurement in measurementsTable.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))">
+
+
+          <tr>
+            <td>{{measurement.sensorId}}</td>
+            <td>{{measurement.sensorReading}}</td>
+            <td>{{measurement.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+
+
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+
+
+
+            <td colspan="5" class="text-center">
+              <pagination
+                ng-model="currentPage"
+                total-items="measurementsTable.length"
+                items-per-page = "numPerPage"
+                boundary-links="true"
+                class="pagination-sm">
+              </pagination>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+      </div>
+  </div>
+
