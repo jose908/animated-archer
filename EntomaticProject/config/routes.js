@@ -51,6 +51,8 @@ module.exports.routes = {
   'PUT /setViewedAlarm': 'AlarmController.setViewedAlarm',
   'GET /getGateways': 'GatewayController.getGateways',
   'GET /getDailyReport': 'GatewayController.getDailyReport',
+  'GET /getAlarmTypes': 'AlarmTypeController.getAlarmTypes',
+  'GET /getSelectedAlarms': 'AlarmController.getSelectedAlarms',
 
 
 

@@ -95,6 +95,10 @@ angular.module('MainModule').controller('SensorLocationController', ['$scope', '
       $scope.loadLocationTab(true);
 
     }
+    $scope.goToAlarms = function (index) {
+      $scope.go('main.alarms', index);
+
+    }
 
 
 

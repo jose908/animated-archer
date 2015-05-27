@@ -36,17 +36,22 @@ module.exports = {
         }
 
       });
-
-
     }
-
-
 
   });
 
+},
+
+  getAlarmTypes: function (req,res) {
+
+    AlarmType.find({}).exec (function foundType (err,found) {
+
+      res.json(found);
+
+    })
 
 
-}
+  }
 
 };
 

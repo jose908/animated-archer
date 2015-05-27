@@ -10,20 +10,23 @@
  * http://sailsjs.org/#/documentation/concepts/Logging
  */
 
+var winston = require('winston');
+
+var customLogger = new winston.Logger({
+  transports: [
+    new(winston.transports.File)({
+      level: 'verbose',
+      filename: '../logs/Entomatic.log'
+    })
+  ]
+});
+
 module.exports.log = {
-
-  /***************************************************************************
-  *                                                                          *
-  * Valid `level` configs: i.e. the minimum log level to capture with        *
-  * sails.log.*()                                                            *
-  *                                                                          *
-  * The order of precedence for log levels from lowest to highest is:        *
-  * silly, verbose, info, debug, warn, error                                 *
-  *                                                                          *
-  * You may also set the level to "silent" to suppress all logs.             *
-  *                                                                          *
-  ***************************************************************************/
-
-  // level: 'info'
-
+  level: 'verbose',
+  colors: false,  // To get clean logs without prefixes or color codings
+  custom: customLogger
 };
+
+
+
+

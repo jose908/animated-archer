@@ -39,6 +39,7 @@ module.exports = {
           req.session.me = user.id;
 
           // All done- let the client know that everything worked.
+          sails.log.info('User ' + user.id + ' has loggedIn' );
           return res.ok();
         }
       });

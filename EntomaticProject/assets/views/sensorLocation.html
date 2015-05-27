@@ -23,7 +23,7 @@
           mac: {{sensor.mac}}<br>
           Gateway Id: {{sensor.gatewayId.gatewayId}}<br><br>
           <p><button title="Access to sensor's statistics" type="button" class="btn btn-default" ng-click='$parent.goToStatistics("{{sensor.sensorId}}")'><i class="glyphicon glyphicon-stats"></i></button>
-          <button title="Access to sensor's alarms"type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></p>
+          <button title="Access to sensor's alarms"type="button" class="btn btn-default" ng-click='$parent.goToAlarms("{{sensor.sensorId}}")'><i class="glyphicon glyphicon-bell"></i></button></p>
         </div>
       </ui-gmap-window>
 
@@ -44,8 +44,8 @@
     </ui-gmap-marker>
 
 
-
   </ui-gmap-google-map>
+
   <div class="row spacer"></div>
 
   <accordion>
@@ -132,7 +132,7 @@
             <td>{{sensor.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
             <td><button type="button" title="Locate sensor's Gateway" class="btn btn-default" ng-click="goToMarkerGateway(sensor.gatewayId.latitude, sensor.gatewayId.longitude, sensor.gatewayId.gatewayId, true)">{{sensor.gatewayId.gatewayId}}</button></td>
             <td><button type="button"title="Access to sensor's statistics" class="btn btn-default" ng-click="goToStatistics(sensor.sensorId)"><i class="glyphicon glyphicon-stats"></i></button></td>
-            <td><button type="button"title="Access to sensor's alarms" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-bell"></i></button></td>
+            <td><button type="button"title="Access to sensor's alarms" class="btn btn-default" ng-click="goToAlarms(sensor.sensorId)"><i class="glyphicon glyphicon-bell"></i></button></td>
 
           </tr>
           </tbody>

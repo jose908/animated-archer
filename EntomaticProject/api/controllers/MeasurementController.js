@@ -31,6 +31,8 @@ module.exports = {
                   if (foundTypes.length == count ) {
                     Measurement.publishCreate(createdMeasurement);
                   }
+                  sails.log.info('Measurement with type:' + foundTypes[i].name + ' created for sensorId:' + req.param('sensor') );
+
                 });
 
             }
@@ -45,6 +47,7 @@ module.exports = {
 
       else {
 
+        sails.log.info('Sensor was not found for sensor with Id:' + req.param('sensor'));
         return res.ok('1|' + req.param('sensor') + '|');
 
       }

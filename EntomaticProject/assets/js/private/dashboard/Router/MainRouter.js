@@ -32,6 +32,9 @@ angular.module('MainModule').config(function($stateProvider, $urlRouterProvider)
     })
     .state('main.alarms', {
       url: '/alarms',
+      params: {
+        param: 'noSensor'
+      },
       templateUrl: '/views/alarms.html',
       controller:'AlarmController'
     })

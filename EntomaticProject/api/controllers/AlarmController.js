@@ -9,32 +9,44 @@ module.exports = {
 
   newAlarm: function (req, res) {
 
-    var isOk  = true;
+    Sensor.findOne({sensorId: req.param('sensor')}).exec(function findSensor(err, foundSensor) {
 
-    Alarm.create({sensorId: req.body.sensor, value: req.body.value, alarmTypeId: 1}).exec(function createCB(err, created) {
+      if (foundSensor) {
 
-      if (err == null) {
-        Alarm.publishCreate(created);
-        console.log('Created new Alarm with id ' + created.sensorId + ' at ' + created.createDate);
+        AlarmType.findOne({shortName: req.param('alarm_type')}).exec(function findMeasurementsType(err, foundType) {
 
+          if (foundType) {
+
+            Alarm.create({
+              sensorId: req.param('sensor'),
+              value: req.param('value'),
+              alarmTypeId: foundType.alarmTypeId
+            }).exec(function createCB(err, created) {
+
+              sails.log.info('NewAlarm inserted for sensorId:' + req.param('sensor') + ' of type:' + foundType.name);
+              Alarm .publishCreate(created);
+              return res.ok('0|' + req.param('sensor') + '|');
+            });
+          }
+          else {
+            sails.log.info('NewAlarm: AlarmType was not found' );
+            return res.ok('1|' + req.param('sensor') + '|');
+          }
+        });
       }
       else {
-        console.log(err);
-        isOk = false;
+
+        sails.log.info('NewAlarm: Sensor with sensorId:' + req.param('sensor') + 'was not found' );
+        return res.ok('1|' + req.param('sensor') + '|');
+
       }
     });
 
-    if(isOk) {
-     return res.ok();
-    }
-    else {
-      return res.badRequest();
-    }
   },
 
   getUnviewedAlarms: function (req, res) {
 
-    Alarm.find({viewed: false}).populate('alarmTypeId').exec(function createCB(err,created) {
+    Alarm.find({viewed: false}).populate('alarmTypeId').populate('sensorId').exec(function createCB(err,created) {
 
       return res.json(created);
 
@@ -47,8 +59,28 @@ module.exports = {
       Alarm.publishUpdate(updated[0].alarmId);
      return res.ok();
     });
+  },
+
+  getSelectedAlarms: function (req, res) {
+
+
+
+      Alarm.find({sensorId: req.param('sensorId'),alarmTypeId: req.param('alarmTypeId')}).populate('alarmTypeId').exec(function findAlarms (err,found){
+
+        res.json(found);
+
+      });
+
+
+
+
 
   }
+
+
+
+
+
 
 
 

@@ -32,6 +32,12 @@ angular.module('MainModule').factory('serverRequestService', ['$http', function(
   dataFactory.getDailyReport = function (param) {
     return $http.get('/getDailyReport',{params: param});
   };
+  dataFactory.getAlarmTypes = function (param) {
+    return $http.get('/getAlarmTypes',{params: param});
+  };
+  dataFactory.getSelectedAlarms = function (param) {
+    return $http.get('/getSelectedAlarms',{params: param});
+  };
 
 
   return dataFactory;

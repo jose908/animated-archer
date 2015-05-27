@@ -6607,6 +6607,9 @@ button.close {
   background-color: #0088CC;
   color:#eeeeee;
 }
+html {
+  overflow-y: scroll;
+}
 
 
 /*# sourceMappingURL=bootstrap.css.map */

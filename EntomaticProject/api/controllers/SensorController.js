@@ -18,14 +18,30 @@ module.exports = {
 
           Sensor.update({mac: req.param('id')},{updateDate: new Date()}).exec (function (err,updatedGateway ) {
 
+            sails.log.info('Sensor with mac:' + req.param('id') + 'storing new date...');
             return res.ok('0|' + foundSensor.mac + '|' + foundSensor.sensorId + '|');
           });
 
         }
         else {
 
-          return res.ok('1|' + foundSensor.mac + '|');
+          sails.log.info('No gateway was found for sensor with mac:' + req.param('id'));
 
+          AlarmType.findOne({shortName: 'bsa'}).exec(function findMeasurementsType(err, foundType) {
+
+            if (foundType) {
+
+              Alarm.create({
+                value: req.param('id'),
+                alarmTypeId: foundType.alarmTypeId
+              }).exec(function createCB(err, created) {
+                Alarm .publishCreate(created);
+                sails.log.info('New Alarm created');
+
+              });
+            }
+          });
+          return res.ok('1|' + req.param('id') + '|');
         }
       }
       else {
@@ -37,6 +53,8 @@ module.exports = {
 
             Sensor.create({latitude: req.param('lat'), longitude: req.param('lon'), mac: req.param('id'), gatewayId:foundGateway.gatewayId }).exec (function createdSensor (err, createdSensor) {
               Sensor.publishCreate(createdSensor);
+
+              sails.log.info('New sensor created with mac:' + createdSensor.mac);
               return res.ok('0|' + createdSensor.mac + '|' + createdSensor.sensorId + '|');
 
             });
@@ -44,7 +62,24 @@ module.exports = {
             }
           else {
 
-           return res.ok('1|' + req.param('id') + '|');
+            sails.log.info('Something wrong has happened creating new Sensor');
+
+            AlarmType.findOne({shortName: 'bsa'}).exec(function findMeasurementsType(err, foundType) {
+
+              if (foundType) {
+
+                Alarm.create({
+                  value: req.param('id'),
+                  alarmTypeId: foundType.alarmTypeId
+                }).exec(function createCB(err, created) {
+                  Alarm .publishCreate(created);
+                  sails.log.info('New Alarm created');
+
+                });
+              }
+            });
+            return res.ok('1|' + req.param('id') + '|');
+
 
           }
 

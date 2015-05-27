@@ -257,6 +257,10 @@ angular.module('MainModule').controller('StatisticsController', ['$scope', '$htt
     getMeasumentsData();
 
   }
+  $scope.goToAlarms = function (index) {
+    $scope.go('main.alarms', index);
+
+  }
 
 
 

@@ -2,9 +2,9 @@
 <a><strong><span class="glyphicon glyphicon-bell"></span>&nbsp;Alarms</strong></a>
 <hr>
 <accordion>
-  <accordion-group is-open="true">
+  <accordion-group is-open="openNew">
     <accordion-heading>
-      <stronng>New Alarms</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      <stronng>New Alarms</stronng> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': openNew, 'glyphicon-chevron-right': !openNew}"></i>
     </accordion-heading>
     <div class="table ">
       <table class="table table-striped table-hover">
@@ -19,13 +19,14 @@
         <tbody ng-repeat="unViewedAlarm in unViewedAlarms.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))">
 
         <tr>
-          <td>{{unViewedAlarm.sensorId}}</td>
+          <td>{{unViewedAlarm.sensorId.sensorId}}</td>
           <td><span class="label label-warning">{{unViewedAlarm.alarmTypeId.name}}</span></td>
           <td><span class="label label-danger">{{unViewedAlarm.value}}</span></td>
           <td>{{unViewedAlarm.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
           <td><button type="button" class="btn btn-success btn-sm" ng-click="markAsViewed( ((currentPage-1)*numPerPage)+ $index, unViewedAlarm.alarmId)">viewed</button></td>
-          <td><button type="button" class="btn btn-default" ng-click="goToStatistics( ((currentPage-1)*numPerPage)+ $index)"><i class="glyphicon glyphicon-map-marker"></i></button></td>
-          <td><button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-stats"></i></button></td>
+          <td><button type="button" title="Access to sensor's location" ng-show="unViewedAlarm.sensorId" class="btn btn-default" ng-click="viewMap(unViewedAlarm.sensorId)"><i class="glyphicon glyphicon-map-marker"></i></button></td>
+          <td><button type="button" title="Access to sensor's statistics" ng-show="unViewedAlarm.sensorId" class="btn btn-default" ng-click="goToStatistics(unViewedAlarm.sensorId.sensorId)"><i class="glyphicon glyphicon-stats"></i></button></td>
+
 
         </tr>
         </tbody>
@@ -46,3 +47,61 @@
     </div>
   </accordion-group>
 </accordion>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6" >
+        <strong>Node</strong>
+        <p class="input-group">
+          <select class="form-control" ng-model="selectedNode" ng-change="changeSensorCombo()" ng-options="sensor.sensorId for sensor in sensors"></select>
+      <span class="input-group-btn">
+      <button type="button" title="Access to sensor's location" class="btn btn-default" ng-click="viewMap(selectedNode)"><i class="glyphicon glyphicon-map-marker"></i></button>
+      </span>
+       <span class="input-group-btn">
+      <button type="button" title="Access to sensor's statistics" class="btn btn-default" ng-click="goToStatistics(selectedNode.sensorId)"><i class="glyphicon glyphicon-stats"></i></button>
+      </span>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <strong>Alarm type</strong>
+        <select class="form-control" ng-model="selectedAlarmType" ng-change="changeAlarmTypeCombo()" ng-options="alarmType.name for alarmType in alarmTypes"></select>
+      </div>
+  </div>
+    <div class="row spacer"></div>
+    <div class="table ">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Sensor id</th>
+          <th>Alarm type</th>
+          <th>Value</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="alarm in alarms.slice(((currentPage-1)*numPerPage), ((currentPage)*numPerPage))">
+
+        <tr>
+          <td>{{alarm.sensorId}}</td>
+          <td>{{alarm.alarmTypeId.name}}</td>
+          <td>{{alarm.value}}</td>
+          <td>{{alarm.createDate | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <pagination
+              ng-model="currentPage"
+              total-items="unViewedAlarms.length"
+              items-per-page = "numPerPage"
+              boundary-links="true"
+              class="pagination-sm">
+            </pagination>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+</div>
