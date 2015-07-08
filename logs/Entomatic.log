@@ -1,0 +1,226 @@
+{"level":"verbose","message":"logger hook loaded successfully.","timestamp":"2015-06-15T03:58:30.248Z"}
+{"level":"verbose","message":"request hook loaded successfully.","timestamp":"2015-06-15T03:58:30.252Z"}
+{"level":"verbose","message":"Loading the app's models and adapters...","timestamp":"2015-06-15T03:58:30.252Z"}
+{"level":"verbose","message":"Loading app models...","timestamp":"2015-06-15T03:58:30.252Z"}
+{"level":"verbose","message":"Loading app adapters...","timestamp":"2015-06-15T03:58:30.257Z"}
+{"level":"verbose","message":"Loading blueprint middleware...","timestamp":"2015-06-15T03:58:30.260Z"}
+{"level":"verbose","message":"blueprints hook loaded successfully.","timestamp":"2015-06-15T03:58:30.260Z"}
+{"level":"verbose","message":"responses hook loaded successfully.","timestamp":"2015-06-15T03:58:30.261Z"}
+{"level":"verbose","message":"controllers hook loaded successfully.","timestamp":"2015-06-15T03:58:30.266Z"}
+{"level":"verbose","message":"Loading policy modules from app...","timestamp":"2015-06-15T03:58:30.267Z"}
+{"level":"verbose","message":"Finished loading policy middleware logic.","timestamp":"2015-06-15T03:58:30.268Z"}
+{"level":"verbose","message":"policies hook loaded successfully.","timestamp":"2015-06-15T03:58:30.268Z"}
+{"level":"verbose","message":"services hook loaded successfully.","timestamp":"2015-06-15T03:58:30.268Z"}
+{"level":"verbose","message":"csrf hook loaded successfully.","timestamp":"2015-06-15T03:58:30.269Z"}
+{"level":"verbose","message":"cors hook loaded successfully.","timestamp":"2015-06-15T03:58:30.269Z"}
+{"level":"verbose","message":"i18n hook loaded successfully.","timestamp":"2015-06-15T03:58:30.282Z"}
+{"level":"verbose","message":"session hook loaded successfully.","timestamp":"2015-06-15T03:58:30.283Z"}
+{"level":"verbose","message":"Loading app Gruntfile...","timestamp":"2015-06-15T03:58:30.283Z"}
+{"level":"verbose","message":"Tracking new grunt child process...","timestamp":"2015-06-15T03:58:30.286Z"}
+{"level":"verbose","message":"grunt hook loaded successfully.","timestamp":"2015-06-15T03:58:30.286Z"}
+{"level":"verbose","message":"http hook loaded successfully.","timestamp":"2015-06-15T03:58:30.557Z"}
+{"level":"verbose","message":"Preparing socket.io...","timestamp":"2015-06-15T03:58:30.557Z"}
+{"level":"verbose","message":"sockets hook loaded successfully.","timestamp":"2015-06-15T03:58:30.567Z"}
+{"level":"verbose","message":"Loading adapter ( sails-postgresql ) for alarm  from `node_modules` directory...","timestamp":"2015-06-15T03:58:30.568Z"}
+{"level":"verbose","message":"views hook loaded successfully.","timestamp":"2015-06-15T03:58:30.657Z"}
+{"level":"verbose","message":"Setting default Express view engine to ejs...","timestamp":"2015-06-15T03:58:30.681Z"}
+{"level":"verbose","message":"Starting ORM...","timestamp":"2015-06-15T03:58:30.681Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"clean:dev\" (clean) task\u001b[24m","timestamp":"2015-06-15T03:58:31.165Z"}
+{"level":"verbose","message":"Grunt :: Cleaning .tmp/public...","timestamp":"2015-06-15T03:58:31.255Z"}
+{"level":"verbose","message":"Grunt :: \u001b[32mOK\u001b[39m\n\n\u001b[4mRunning \"jst:dev\" (jst) task\u001b[24m\n\u001b[31m>> \u001b[39mDestination not written because compiled files were empty.\n\n\u001b[4mRunning \"less:dev\" (less) task\u001b[24m\nFile .tmp/public/styles/importer.css created: 0 B → 619 B","timestamp":"2015-06-15T03:58:31.255Z"}
+{"level":"verbose","message":"orm hook loaded successfully.","timestamp":"2015-06-15T03:58:31.281Z"}
+{"level":"verbose","message":"pubsub hook loaded successfully.","timestamp":"2015-06-15T03:58:31.283Z"}
+{"level":"verbose","message":"Built-in hooks are ready.","timestamp":"2015-06-15T03:58:31.283Z"}
+{"level":"verbose","message":"Instantiating registry...","timestamp":"2015-06-15T03:58:31.283Z"}
+{"level":"verbose","message":"Loading router...","timestamp":"2015-06-15T03:58:31.283Z"}
+{"level":"verbose","message":"Policy-controller bindings complete!","timestamp":"2015-06-15T03:58:31.287Z"}
+{"level":"verbose","message":"All hooks were loaded successfully.","timestamp":"2015-06-15T03:58:31.339Z"}
+{"level":"verbose","message":"Starting app at c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject...","timestamp":"2015-06-15T03:58:31.339Z"}
+{"level":"verbose","message":"Running the setup logic in `sails.config.bootstrap(cb)`...","timestamp":"2015-06-15T03:58:31.340Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"               .-..-.","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"   Sails              <|    .-..-.","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"   v0.11.0             |\\","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"                      /|.\\","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"                     / || \\","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"                   ,'  |'  \\","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"                .-'.-==|/_--'","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"                `--'-------' ","timestamp":"2015-06-15T03:58:31.342Z"}
+{"level":"info","message":"   __---___--___---___--___---___--___","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"info","message":" ____---___--___---___--___---___--___-__","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"info","message":"Server lifted in `c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject`","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"info","message":"To see your app, visit \u001b[4mhttp://localhost:1337\u001b[24m","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"info","message":"To shut down Sails, press <CTRL> + C at any time.","timestamp":"2015-06-15T03:58:31.343Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"copy:dev\" (copy) task\u001b[24m","timestamp":"2015-06-15T03:58:31.484Z"}
+{"level":"verbose","message":"Grunt :: Copied \u001b[36m45\u001b[39m files\n\n\u001b[4mRunning \"coffee:dev\" (coffee) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devJs\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devStyles\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devTpl\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devJsJade\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T03:58:31.484Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devStylesJade\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devTplJade\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"watch\" task\u001b[24m\nWaiting...","timestamp":"2015-06-15T03:58:31.484Z"}
+{"level":"verbose","message":"Rendering view: \"homepage\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\homepage\")","timestamp":"2015-06-15T03:59:21.621Z"}
+{"level":"info","message":"User 1 has loggedIn","timestamp":"2015-06-15T03:59:23.504Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T03:59:23.519Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-06-15T03:59:23.829Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-06-15T03:59:23.831Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T03:59:32.321Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-06-15T03:59:32.670Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-06-15T03:59:32.670Z"}
+{"level":"verbose","message":"Rendering view: \"homepage\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\homepage\")","timestamp":"2015-06-15T03:59:33.696Z"}
+{"level":"verbose","message":"Sending 404 (\"Not Found\") response","timestamp":"2015-06-15T04:00:51.625Z"}
+{"level":"verbose","message":"Sending 404 (\"Not Found\") response","timestamp":"2015-06-15T04:00:58.902Z"}
+{"level":"info","message":"User 1 has loggedIn","timestamp":"2015-06-15T04:01:07.151Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T04:01:07.161Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-06-15T04:01:07.423Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-06-15T04:01:07.424Z"}
+{"level":"verbose","message":"Rendering view: \"homepage\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\homepage\")","timestamp":"2015-06-15T04:01:14.967Z"}
+{"level":"verbose","message":"Sending 404 (\"Not Found\") response","timestamp":"2015-06-15T04:02:05.893Z"}
+{"level":"info","message":"User 1 has loggedIn","timestamp":"2015-06-15T04:03:00.002Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T04:03:00.012Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-06-15T04:03:00.218Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-06-15T04:03:00.218Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getSensors' }","timestamp":"2015-06-15T04:04:06.868Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getSensors\"...","timestamp":"2015-06-15T04:04:06.868Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get',\n  headers: {},\n  data: {},\n  url: '/getAllMeasurement' }","timestamp":"2015-06-15T04:06:37.367Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getAllMeasurement\"...","timestamp":"2015-06-15T04:06:37.367Z"}
+{"level":"verbose","message":"logger hook loaded successfully.","timestamp":"2015-06-15T17:54:14.458Z"}
+{"level":"verbose","message":"request hook loaded successfully.","timestamp":"2015-06-15T17:54:14.459Z"}
+{"level":"verbose","message":"Loading the app's models and adapters...","timestamp":"2015-06-15T17:54:14.459Z"}
+{"level":"verbose","message":"Loading app models...","timestamp":"2015-06-15T17:54:14.459Z"}
+{"level":"verbose","message":"Loading app adapters...","timestamp":"2015-06-15T17:54:14.464Z"}
+{"level":"verbose","message":"Loading blueprint middleware...","timestamp":"2015-06-15T17:54:14.467Z"}
+{"level":"verbose","message":"blueprints hook loaded successfully.","timestamp":"2015-06-15T17:54:14.467Z"}
+{"level":"verbose","message":"responses hook loaded successfully.","timestamp":"2015-06-15T17:54:14.467Z"}
+{"level":"verbose","message":"controllers hook loaded successfully.","timestamp":"2015-06-15T17:54:14.473Z"}
+{"level":"verbose","message":"Loading policy modules from app...","timestamp":"2015-06-15T17:54:14.474Z"}
+{"level":"verbose","message":"Finished loading policy middleware logic.","timestamp":"2015-06-15T17:54:14.476Z"}
+{"level":"verbose","message":"policies hook loaded successfully.","timestamp":"2015-06-15T17:54:14.476Z"}
+{"level":"verbose","message":"services hook loaded successfully.","timestamp":"2015-06-15T17:54:14.476Z"}
+{"level":"verbose","message":"csrf hook loaded successfully.","timestamp":"2015-06-15T17:54:14.476Z"}
+{"level":"verbose","message":"cors hook loaded successfully.","timestamp":"2015-06-15T17:54:14.476Z"}
+{"level":"verbose","message":"i18n hook loaded successfully.","timestamp":"2015-06-15T17:54:14.490Z"}
+{"level":"verbose","message":"session hook loaded successfully.","timestamp":"2015-06-15T17:54:14.492Z"}
+{"level":"verbose","message":"Loading app Gruntfile...","timestamp":"2015-06-15T17:54:14.492Z"}
+{"level":"verbose","message":"Tracking new grunt child process...","timestamp":"2015-06-15T17:54:14.495Z"}
+{"level":"verbose","message":"grunt hook loaded successfully.","timestamp":"2015-06-15T17:54:14.495Z"}
+{"level":"verbose","message":"http hook loaded successfully.","timestamp":"2015-06-15T17:54:14.779Z"}
+{"level":"verbose","message":"Preparing socket.io...","timestamp":"2015-06-15T17:54:14.779Z"}
+{"level":"verbose","message":"sockets hook loaded successfully.","timestamp":"2015-06-15T17:54:14.793Z"}
+{"level":"verbose","message":"Loading adapter ( sails-postgresql ) for alarm  from `node_modules` directory...","timestamp":"2015-06-15T17:54:14.794Z"}
+{"level":"verbose","message":"views hook loaded successfully.","timestamp":"2015-06-15T17:54:14.892Z"}
+{"level":"verbose","message":"Setting default Express view engine to ejs...","timestamp":"2015-06-15T17:54:14.917Z"}
+{"level":"verbose","message":"Starting ORM...","timestamp":"2015-06-15T17:54:14.918Z"}
+{"level":"verbose","message":"orm hook loaded successfully.","timestamp":"2015-06-15T17:54:15.416Z"}
+{"level":"verbose","message":"pubsub hook loaded successfully.","timestamp":"2015-06-15T17:54:15.418Z"}
+{"level":"verbose","message":"Built-in hooks are ready.","timestamp":"2015-06-15T17:54:15.419Z"}
+{"level":"verbose","message":"Instantiating registry...","timestamp":"2015-06-15T17:54:15.419Z"}
+{"level":"verbose","message":"Loading router...","timestamp":"2015-06-15T17:54:15.419Z"}
+{"level":"verbose","message":"Policy-controller bindings complete!","timestamp":"2015-06-15T17:54:15.423Z"}
+{"level":"verbose","message":"All hooks were loaded successfully.","timestamp":"2015-06-15T17:54:15.481Z"}
+{"level":"verbose","message":"Starting app at c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject...","timestamp":"2015-06-15T17:54:15.481Z"}
+{"level":"verbose","message":"Running the setup logic in `sails.config.bootstrap(cb)`...","timestamp":"2015-06-15T17:54:15.481Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"               .-..-.","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"   Sails              <|    .-..-.","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"   v0.11.0             |\\","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"                      /|.\\","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"                     / || \\","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"                   ,'  |'  \\","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"                .-'.-==|/_--'","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"                `--'-------' ","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"   __---___--___---___--___---___--___","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":" ____---___--___---___--___---___--___-__","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"","timestamp":"2015-06-15T17:54:15.484Z"}
+{"level":"info","message":"Server lifted in `c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject`","timestamp":"2015-06-15T17:54:15.485Z"}
+{"level":"info","message":"To see your app, visit \u001b[4mhttp://localhost:1337\u001b[24m","timestamp":"2015-06-15T17:54:15.485Z"}
+{"level":"info","message":"To shut down Sails, press <CTRL> + C at any time.","timestamp":"2015-06-15T17:54:15.485Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"clean:dev\" (clean) task\u001b[24m","timestamp":"2015-06-15T17:54:15.488Z"}
+{"level":"verbose","message":"Grunt :: Cleaning .tmp/public...","timestamp":"2015-06-15T17:54:15.539Z"}
+{"level":"verbose","message":"Grunt :: \u001b[32mOK\u001b[39m\n\n\u001b[4mRunning \"jst:dev\" (jst) task\u001b[24m\n\u001b[31m>> \u001b[39mDestination not written because compiled files were empty.\n\n\u001b[4mRunning \"less:dev\" (less) task\u001b[24m\nFile .tmp/public/styles/importer.css created: 0 B → 619 B","timestamp":"2015-06-15T17:54:15.539Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"copy:dev\" (copy) task\u001b[24m","timestamp":"2015-06-15T17:54:15.760Z"}
+{"level":"verbose","message":"Grunt :: Copied \u001b[36m45\u001b[39m files","timestamp":"2015-06-15T17:54:15.760Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"coffee:dev\" (coffee) task\u001b[24m","timestamp":"2015-06-15T17:54:15.760Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devJs\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.761Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devStyles\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.761Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devTpl\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.761Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devJsJade\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.761Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devStylesJade\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.762Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devTplJade\" (sails-linker) task\u001b[24m","timestamp":"2015-06-15T17:54:15.763Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"watch\" task\u001b[24m","timestamp":"2015-06-15T17:54:15.763Z"}
+{"level":"verbose","message":"Grunt :: Waiting...","timestamp":"2015-06-15T17:54:15.763Z"}
+{"level":"verbose","message":"Rendering view: \"homepage\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\homepage\")","timestamp":"2015-06-15T17:54:25.815Z"}
+{"level":"info","message":"User 1 has loggedIn","timestamp":"2015-06-15T17:54:30.074Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T17:54:30.089Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-06-15T17:54:41.381Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-06-15T17:54:41.684Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-06-15T17:54:41.687Z"}
+{"level":"verbose","message":"Lowering sails...","timestamp":"2015-06-15T22:00:19.677Z"}
+{"level":"verbose","message":"logger hook loaded successfully.","timestamp":"2015-07-08T19:36:32.744Z"}
+{"level":"verbose","message":"request hook loaded successfully.","timestamp":"2015-07-08T19:36:32.744Z"}
+{"level":"verbose","message":"Loading the app's models and adapters...","timestamp":"2015-07-08T19:36:32.745Z"}
+{"level":"verbose","message":"Loading app models...","timestamp":"2015-07-08T19:36:32.745Z"}
+{"level":"verbose","message":"Loading app adapters...","timestamp":"2015-07-08T19:36:32.751Z"}
+{"level":"verbose","message":"Loading blueprint middleware...","timestamp":"2015-07-08T19:36:32.753Z"}
+{"level":"verbose","message":"blueprints hook loaded successfully.","timestamp":"2015-07-08T19:36:32.754Z"}
+{"level":"verbose","message":"responses hook loaded successfully.","timestamp":"2015-07-08T19:36:32.754Z"}
+{"level":"verbose","message":"controllers hook loaded successfully.","timestamp":"2015-07-08T19:36:32.760Z"}
+{"level":"verbose","message":"Loading policy modules from app...","timestamp":"2015-07-08T19:36:32.761Z"}
+{"level":"verbose","message":"Finished loading policy middleware logic.","timestamp":"2015-07-08T19:36:32.762Z"}
+{"level":"verbose","message":"policies hook loaded successfully.","timestamp":"2015-07-08T19:36:32.762Z"}
+{"level":"verbose","message":"services hook loaded successfully.","timestamp":"2015-07-08T19:36:32.763Z"}
+{"level":"verbose","message":"csrf hook loaded successfully.","timestamp":"2015-07-08T19:36:32.763Z"}
+{"level":"verbose","message":"cors hook loaded successfully.","timestamp":"2015-07-08T19:36:32.763Z"}
+{"level":"verbose","message":"i18n hook loaded successfully.","timestamp":"2015-07-08T19:36:32.782Z"}
+{"level":"verbose","message":"session hook loaded successfully.","timestamp":"2015-07-08T19:36:32.783Z"}
+{"level":"verbose","message":"Loading app Gruntfile...","timestamp":"2015-07-08T19:36:32.783Z"}
+{"level":"verbose","message":"Tracking new grunt child process...","timestamp":"2015-07-08T19:36:32.787Z"}
+{"level":"verbose","message":"grunt hook loaded successfully.","timestamp":"2015-07-08T19:36:32.787Z"}
+{"level":"verbose","message":"http hook loaded successfully.","timestamp":"2015-07-08T19:36:33.026Z"}
+{"level":"verbose","message":"Preparing socket.io...","timestamp":"2015-07-08T19:36:33.026Z"}
+{"level":"verbose","message":"sockets hook loaded successfully.","timestamp":"2015-07-08T19:36:33.038Z"}
+{"level":"verbose","message":"Loading adapter ( sails-postgresql ) for alarm  from `node_modules` directory...","timestamp":"2015-07-08T19:36:33.039Z"}
+{"level":"verbose","message":"views hook loaded successfully.","timestamp":"2015-07-08T19:36:33.131Z"}
+{"level":"verbose","message":"Setting default Express view engine to ejs...","timestamp":"2015-07-08T19:36:33.146Z"}
+{"level":"verbose","message":"Starting ORM...","timestamp":"2015-07-08T19:36:33.146Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"clean:dev\" (clean) task\u001b[24m","timestamp":"2015-07-08T19:36:33.623Z"}
+{"level":"verbose","message":"orm hook loaded successfully.","timestamp":"2015-07-08T19:36:33.713Z"}
+{"level":"verbose","message":"pubsub hook loaded successfully.","timestamp":"2015-07-08T19:36:33.715Z"}
+{"level":"verbose","message":"Built-in hooks are ready.","timestamp":"2015-07-08T19:36:33.715Z"}
+{"level":"verbose","message":"Instantiating registry...","timestamp":"2015-07-08T19:36:33.715Z"}
+{"level":"verbose","message":"Grunt :: Cleaning .tmp/public...\u001b[32mOK\u001b[39m\n\n\u001b[4mRunning \"jst:dev\" (jst) task\u001b[24m\n\u001b[31m>> \u001b[39mDestination not written because compiled files were empty.\n\n\u001b[4mRunning \"less:dev\" (less) task\u001b[24m\nFile .tmp/public/styles/importer.css created: 0 B → 619 B","timestamp":"2015-07-08T19:36:33.715Z"}
+{"level":"verbose","message":"Loading router...","timestamp":"2015-07-08T19:36:33.715Z"}
+{"level":"verbose","message":"Policy-controller bindings complete!","timestamp":"2015-07-08T19:36:33.719Z"}
+{"level":"verbose","message":"All hooks were loaded successfully.","timestamp":"2015-07-08T19:36:33.764Z"}
+{"level":"verbose","message":"Starting app at c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject...","timestamp":"2015-07-08T19:36:33.764Z"}
+{"level":"verbose","message":"Running the setup logic in `sails.config.bootstrap(cb)`...","timestamp":"2015-07-08T19:36:33.764Z"}
+{"level":"info","message":"","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"               .-..-.","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"   Sails              <|    .-..-.","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"   v0.11.0             |\\","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"                      /|.\\","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"                     / || \\","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"                   ,'  |'  \\","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"                .-'.-==|/_--'","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"                `--'-------' ","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"   __---___--___---___--___---___--___","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":" ____---___--___---___--___---___--___-__","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"Server lifted in `c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject`","timestamp":"2015-07-08T19:36:33.767Z"}
+{"level":"info","message":"To see your app, visit \u001b[4mhttp://localhost:1337\u001b[24m","timestamp":"2015-07-08T19:36:33.768Z"}
+{"level":"info","message":"To shut down Sails, press <CTRL> + C at any time.","timestamp":"2015-07-08T19:36:33.768Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"copy:dev\" (copy) task\u001b[24m","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: Copied \u001b[36m45\u001b[39m files","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"coffee:dev\" (coffee) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devJs\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devStyles\" (sails-linker) task\u001b[24m","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devTpl\" (sails-linker) task\u001b[24m","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devJsJade\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"sails-linker:devStylesJade\" (sails-linker) task\u001b[24m","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: \u001b[4mRunning \"sails-linker:devTplJade\" (sails-linker) task\u001b[24m\n\n\u001b[4mRunning \"watch\" task\u001b[24m","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Grunt :: Waiting...","timestamp":"2015-07-08T19:36:33.916Z"}
+{"level":"verbose","message":"Rendering view: \"homepage\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\homepage\")","timestamp":"2015-07-08T19:36:47.078Z"}
+{"level":"info","message":"User 1 has loggedIn","timestamp":"2015-07-08T19:36:50.727Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-07-08T19:36:50.740Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-07-08T19:36:54.599Z"}
+{"level":"verbose","message":"Rendering view: \"dashboard/index\" (located @ \"c:\\Users\\Lisa\\Desktop\\entomatic-server\\EntomaticProject\\views\\dashboard\\index\")","timestamp":"2015-07-08T19:36:58.033Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getInitValues' }","timestamp":"2015-07-08T19:36:58.403Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getInitValues\"...","timestamp":"2015-07-08T19:36:58.406Z"}
+{"level":"verbose","message":"Receiving incoming message from Socket.io:  { method: 'get', headers: {}, data: {}, url: '/getSensors' }","timestamp":"2015-07-08T19:37:00.683Z"}
+{"level":"verbose","message":"Interpreting socket.io message as virtual request to \"get /getSensors\"...","timestamp":"2015-07-08T19:37:00.683Z"}
